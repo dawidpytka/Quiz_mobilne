@@ -14,7 +14,13 @@ class Opening extends StatefulWidget{
 class OpeningState extends State<Opening>{
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return new MaterialApp(
+    home: new GestureDetector(
+      onTap: () {
+        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz1()));
+      },
+      child: new Scaffold(
+
       backgroundColor: Colors.white70,
       body: new Container(
         child: new Column(
@@ -43,7 +49,8 @@ class OpeningState extends State<Opening>{
             ]
         )
       ),
-    );
+    )));
+
   }
 
   void startQuiz(){
