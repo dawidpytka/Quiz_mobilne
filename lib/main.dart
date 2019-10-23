@@ -1,41 +1,52 @@
 import 'package:flutter/material.dart';
-import './quiz1.dart';
+import 'package:flutter/services.dart';
+import 'package:quiz/Opening.dart';
+
 
 void main(){
   runApp(
       new MaterialApp(
-        home: new Home(),
+        home: new Logo(),
       )
   );
 }
 
-class Home extends StatefulWidget{
+class Logo extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    return new HomeState();
+    return new LogoState();
   }
 }
 
-class HomeState extends State<Home>{
+class LogoState extends State<Logo>{
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return new MaterialApp(
       home:new GestureDetector(
-          onTap: startQuiz,
+//          onTap: startQuiz,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => new Opening()),
+          );
+        },
           child:new Scaffold(
-            body: Center(
-                child: Text("Press anywhere to start")
+            body: new Image.asset(
+              'assets/images/logo-PL.jpg',
+              fit: BoxFit.cover,
+              height: double.infinity,
+              width: double.infinity,
+              alignment: Alignment.center,
             ),
-            backgroundColor: Colors.tealAccent,
           )
-
       ),
     );
   }
 
-  void startQuiz(){
-    setState(() {
-      Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz1()));
-    });
-  }
+
+
 }
