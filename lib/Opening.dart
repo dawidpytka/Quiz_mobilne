@@ -1,8 +1,10 @@
 import 'dart:ui';
 import './quiz1.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:quiz/Home.dart';
+
 
 class Opening extends StatefulWidget{
   @override
@@ -51,12 +53,6 @@ class OpeningState extends State<Opening>{
       ),
     )));
 
-  }
-
-  void startQuiz(){
-    setState(() {
-      Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz1()));
-    });
   }
 
 }
