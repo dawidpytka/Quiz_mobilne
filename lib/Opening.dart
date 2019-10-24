@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:ui';
 import './Home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:quiz/Home.dart';
+import 'package:quiz/Routes.dart';
 
 
 class Opening extends StatefulWidget{
@@ -14,13 +16,25 @@ class Opening extends StatefulWidget{
 }
 
 class OpeningState extends State<Opening>{
+  Timer _timer;
+  OpeningState(){
+    _timer = new Timer(const Duration(milliseconds: 2000), () {
+      setState(() {
+        Navigator.push(
+          context,
+          ScaleRoute(page: Home()),
+        );
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
     home: new GestureDetector(
-      onTap: () {
-        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Home()));
-      },
+//      onTap: () {
+//        Navigator.push(context, ScaleRoute(page: new Home()),);
+//      },
       child: new Scaffold(
 
       backgroundColor: Colors.white70,

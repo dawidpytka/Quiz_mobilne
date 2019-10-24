@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quiz/Opening.dart';
+import 'package:quiz/Routes.dart';
+
+import 'dart:async';
 
 class Logo extends StatefulWidget{
   @override
@@ -10,21 +13,33 @@ class Logo extends StatefulWidget{
 }
 
 class LogoState extends State<Logo>{
+  Timer _timer;
+  LogoState(){
+    _timer = new Timer(const Duration(milliseconds: 2000), () {
+      setState(() {
+        Navigator.push(
+          context,
+          FadeRoute(page: Opening()),
+        );
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
     return new MaterialApp(
       home:new GestureDetector(
-          onTap: () {
-
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => new Opening()),
-            );
-          },
+//          onTap: () {
+//            Navigator.push(
+//              context,
+//              FadeRoute(page: AnimatedFlutterLogo()),
+//            );
+//          },
           child:new Scaffold(
             body: new Image.asset(
               'assets/images/logo-PL-start.jpeg',
