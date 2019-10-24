@@ -37,7 +37,7 @@ class OpeningState extends State<Opening>{
 //      },
       child: new Scaffold(
 
-      backgroundColor: Colors.white70,
+      backgroundColor: Color.fromRGBO(255, 255, 255, 0.9),
       body: new Container(
         child: new Column(
             children: <Widget>[
