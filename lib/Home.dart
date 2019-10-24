@@ -21,7 +21,7 @@ class HomeState extends State<Home>{
         children: <Widget>[
           Container(
             child :new Image.asset(
-        'assets/images/logo-PL.jpg',
+        'assets/images/logo-PL-tlo.jpeg',
         fit: BoxFit.cover,
         height: double.infinity,
         width: double.infinity,

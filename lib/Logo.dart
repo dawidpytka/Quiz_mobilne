@@ -27,7 +27,7 @@ class LogoState extends State<Logo>{
           },
           child:new Scaffold(
             body: new Image.asset(
-              'assets/images/logo-PL.jpg',
+              'assets/images/logo-PL-start.jpeg',
               fit: BoxFit.cover,
               height: double.infinity,
               width: double.infinity,
