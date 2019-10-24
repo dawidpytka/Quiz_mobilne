@@ -1,8 +1,12 @@
 import 'dart:ui';
+import 'package:quiz/regulations.dart';
+
 import './quiz1.dart';
+import './regulations.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 
 class Home extends StatefulWidget{
   @override
@@ -38,14 +42,6 @@ class HomeState extends State<Home>{
                   startGameButton('Rozpocznij grę'),
                   new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
                   infoButton("Informacje o politechnice"),
-
-
-
-
-
-
-
-
                 ],
               )
             )
@@ -56,16 +52,11 @@ class HomeState extends State<Home>{
     );
   }
 
-  void wyswietl(){
-    print("Chyba sie udalo");
-  }
-
-
   MaterialButton infoButton(var text)
   {
     return new MaterialButton(
       color: Colors.lightBlueAccent,
-      onPressed: wyswietl,
+      onPressed:startMyApp,
       minWidth: MediaQuery.of(context).size.width * 0.4,
       height: 100.0,
       child: new Text(text,
@@ -75,6 +66,7 @@ class HomeState extends State<Home>{
       ),
     );
   }
+
   MaterialButton startGameButton(var text)
   {
     return new MaterialButton(
@@ -92,6 +84,12 @@ class HomeState extends State<Home>{
   void startQuiz1(){
     setState(() {
       Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz1()));
+    });
+  }
+
+  void startMyApp(){
+    setState(() {
+      Navigator.push(context, new MaterialPageRoute(builder: (context)=> new MyApp()));
     });
   }
 }
