@@ -1,5 +1,5 @@
 import 'dart:ui';
-import './quiz1.dart';
+import './Home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class OpeningState extends State<Opening>{
     return new MaterialApp(
     home: new GestureDetector(
       onTap: () {
-        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz1()));
+        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Home()));
       },
       child: new Scaffold(
 

@@ -11,23 +11,85 @@ class Home extends StatefulWidget{
   }
 }
 
+
+
 class HomeState extends State<Home>{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Image.asset(
+      body: new Stack(
+        children: <Widget>[
+          Container(
+            child :new Image.asset(
         'assets/images/logo-PL.jpg',
         fit: BoxFit.cover,
         height: double.infinity,
         width: double.infinity,
         alignment: Alignment.center,
-        color: Color.fromRGBO(255, 155, 255, 0.5)
-      ),
+          )
+          ),
+          Center(
+            child: Container(
+              child:new Column(
+                children: <Widget>[
+                 new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.15)
+                 ),
+
+                  startGameButton('Rozpocznij grę'),
+                  new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
+                  infoButton("Informacje o politechnice"),
+
+
+
+
+
+
+
+
+                ],
+              )
+            )
+          )
+        ],
+
+      )
     );
   }
 
+  void wyswietl(){
+    print("Chyba sie udalo");
+  }
 
-  void startQuiz(){
+
+  MaterialButton infoButton(var text)
+  {
+    return new MaterialButton(
+      color: Colors.lightBlueAccent,
+      onPressed: wyswietl,
+      minWidth: MediaQuery.of(context).size.width * 0.4,
+      height: 100.0,
+      child: new Text(text,
+          style: new TextStyle(
+              color: Colors.black
+          )
+      ),
+    );
+  }
+  MaterialButton startGameButton(var text)
+  {
+    return new MaterialButton(
+      color: Colors.lightBlueAccent,
+      onPressed: startQuiz1,
+      minWidth: MediaQuery.of(context).size.width * 0.4,
+      height: 100.0,
+      child: new Text(text,
+          style: new TextStyle(
+              color: Colors.black
+          )
+      ),
+    );
+  }
+  void startQuiz1(){
     setState(() {
       Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz1()));
     });

@@ -53,12 +53,12 @@ class Quiz1State extends State<Quiz1> {
           margin: EdgeInsets.all(MediaQuery.of(context).size.height*0.01),
           child: new Column(
               children: <Widget>[
-                new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
+                new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
                 new Text ("Pytanie ${questionNumber+1} z ${quiz.questions.length}",
                     style: new TextStyle(
                         fontSize: 25.0
                     )),
-                new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.01)),
+                new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.2)),
                 new Text ("${quiz.questions[questionNumber]}"),
                 new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
                 new Row(
