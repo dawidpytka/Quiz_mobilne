@@ -25,8 +25,11 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_launcher_icons: "^0.7.0"
 
-  flutter_full_pdf_viewer: ^1.0.4
-  path_provider: ^0.4.1
+#  flutter_full_pdf_viewer: ^1.0.4
+#  path_provider: ^0.4.1
+  pdftron_flutter:
+    git:
+      url: git://github.com/PDFTron/pdftron-flutter.git
 
 
 

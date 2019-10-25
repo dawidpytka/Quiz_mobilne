@@ -4,6 +4,7 @@ import 'package:quiz/regulations.dart';
 import './quiz1.dart';
 import './regulations.dart';
 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -89,7 +90,7 @@ class HomeState extends State<Home>{
 
   void startMyApp(){
     setState(() {
-      Navigator.push(context, new MaterialPageRoute(builder: (context)=> new MyApp()));
+      Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Viewer()));
     });
   }
 }

@@ -1,92 +1,59 @@
-import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
-import 'package:path_provider/path_provider.dart';
+import 'dart:async';
 
-const String _documentPath = 'assets/PDFs/regulamin_studiow.pdf';
+import 'package:flutter/services.dart';
+import 'package:pdftron_flutter/pdftron_flutter.dart';
 
 
-class MyApp extends StatelessWidget {
+
+class Viewer extends StatefulWidget {
+  @override
+  _ViewerState createState() => _ViewerState();
+}
+
+class _ViewerState extends State<Viewer> {
+  String _version = 'Unknown';
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+
+    PdftronFlutter.openDocument("https://pdftron.s3.amazonaws.com/downloads/pdfref.pdf");
+  }
+
+  // Platform messages are asynchronous, so we initialize via an async method.
+  Future<void> initPlatformState() async {
+    String version;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      PdftronFlutter.initialize("pDww-i5EZrU7KB2UKnHSRllTIloP4njHnGKQ421kdiYFxiJskqP1239ZNpS4BWJW8xYjDOunNfySI2DyF5NSPjUYGhFMBQbaOBQfOWu-PJPsatqd6y7wXaJeLHJTV7uR0CTOdvFXcSckP0BDQbIyp_TKEQwqRfQhMm-kwcxZ1nMb5T24F8gwzWI8UpigN_8GJxBZg_AS_VyEBbDJ6_nk9KyLuoAw5oFsMcJO64zaIwSCGYjdvOsPpiokg309ZO3DKBJre3NIUCnXLOFyHh8i51uiCPE5iQhE96P-LP5DcTask8gIWjIrJf93e6WAZSBgCJpPpfaZlsDmPoNaO5ixuqsGHA1peSNjV-zDaIvdhqFfgYR9zu2v2JQc9XPLBd17O1lZ9XMeyN0hG8oA6yUtMLZWxe948BtdQUcQusUBLQ5DLXF0MQBCC0uFCpaF4IBU");
+      version = await PdftronFlutter.version;
+    } on PlatformException {
+      version = 'Failed to get platform version.';
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      _version = version;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Opening a PDF',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Regulations(),
-    );
-  }
-}
-
-class Regulations extends StatefulWidget {
-  Regulations({Key key}) : super(key: key);
-
-  @override
-  _RegulationsState createState() => _RegulationsState();
-}
-
-
-class _RegulationsState extends State<Regulations> {
-  // This moves the PDF file from the assets to a place accessible by our PDF viewer.
-  Future<String> prepareTestPdf() async {
-    final ByteData bytes =
-    await DefaultAssetBundle.of(context).load(_documentPath);
-    final Uint8List list = bytes.buffer.asUint8List();
-
-    final tempDir = await getTemporaryDirectory();
-    final tempDocumentPath = '${tempDir.path}/$_documentPath';
-
-    final file = await File(tempDocumentPath).create(recursive: true);
-    file.writeAsBytesSync(list);
-    return tempDocumentPath;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Opening a PDF"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              onPressed: () => {
-                // We need to prepare the test PDF, and then we can display the PDF.
-                prepareTestPdf().then((path) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => FullPdfViewerScreen(path)),
-                  );
-                })
-              },
-              child: const Text('Open PDF with full_pdf_viewer'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-class FullPdfViewerScreen extends StatelessWidget {
-  final String pdfPath;
-
-  FullPdfViewerScreen(this.pdfPath);
-
-  @override
-  Widget build(BuildContext context) {
-    return PDFViewerScaffold(
+      home: Scaffold(
         appBar: AppBar(
-          title: Text("Document"),
+          title: const Text('PDFTron flutter app'),
         ),
-        path: pdfPath);
+        body: Center(
+          child: Text('Running on: $_version\n'),
+        ),
+      ),
+    );
   }
 }
-
