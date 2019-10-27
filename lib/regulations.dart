@@ -19,7 +19,7 @@ class _ViewerState extends State<Viewer> {
     super.initState();
     initPlatformState();
 
-    PdftronFlutter.openDocument("http://site-868571.mozfiles.com/files/868571/001_regulamin_studiow.pdf");
+    PdftronFlutter.openDocument("https://site-868571.mozfiles.com/files/868571/001_regulamin_studiow.pdf");
   }
 
   // Platform messages are asynchronous, so we initialize via an async method.

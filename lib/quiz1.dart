@@ -2,9 +2,73 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz/database.dart';
+import 'package:quiz/database.dart' as database;
+import 'database.dart';
+
 
 var questionNumber = 0;
 var quiz = new Quiz();
+
+
+void questionsInit() async
+{
+  var question1 = Question(
+    id: 1,
+    question: 'Ile lat ma Politechnika Lodzka',
+      answerA: '35',
+      answerB: '67',
+      answerC: '89',
+      answerD: '74',
+      correctAnswer: '74'
+  );
+
+  var question2 = Question(
+      id: 2,
+      question: 'Ile wydzialow ma Politechnika Lodzka',
+      answerA: '10',
+      answerB: '11',
+      answerC: '17',
+      answerD: '9',
+      correctAnswer: '9'
+  );
+  var question3 = Question(
+      id: 3,
+      question: 'Ile kierunkow studiow ma Politechnika Lodzka',
+      answerA: '30',
+      answerB: '35',
+      answerC: '22',
+      answerD: '45',
+      correctAnswer: '45'
+  );
+
+  var question4 = Question(
+      id: 4,
+      question: 'Ilu profesorow posiada Politechnika Lodzka',
+      answerA: '200',
+      answerB: '211',
+      answerC: '222',
+      answerD: '229',
+      correctAnswer: '229'
+  );
+  var question5 = Question(
+      id: 5,
+      question: 'Na jakim wydziale naucza dr Kossowski',
+      answerA: 'WEEIA',
+      answerB: 'FTIMS',
+      answerC: 'MECHANICZNY',
+      answerD: 'ELEKTRYCZNY',
+      correctAnswer: 'FTIMS'
+  );
+  await insertQuestion(question1);
+  await insertQuestion(question2);
+  await insertQuestion(question3);
+  await insertQuestion(question4);
+  await insertQuestion(question5);
+
+  print(await questions());
+
+}
 
 class Quiz{
   var questions = [
@@ -16,25 +80,61 @@ class Quiz{
   var correctAnswers = [
     "Right, Right2"
   ];
-    Quiz(){
+    Quiz() {
+//      List question1 = new List();         //for testing , TODO loading questions and answers from file
+//      List question2 = new List();
+//      question1.add("Wrong1");
+//      question1.add("Wrong2");
+//      question1.add("Wrong3");
+//      question1.add("Right");
+//
+//      question2.add("Wrong4");
+//      question2.add("Wrong5");
+//      question2.add("Wrong6");
+//      question2.add("Right2");
+//      question1.shuffle();
+//      question2.shuffle();
+//      questionsInit();
+      getList();
+//      List<Question> questions = new List<Question>();
+//      questions.addAll(database.questions() as Iterable<Question>);
+//      print(questions[0].id);
+
+
+
+
+//      choices.add(question1);
+//      choices.add(question2);
+    }
+
+    void getList()async{
       List question1 = new List();         //for testing , TODO loading questions and answers from file
       List question2 = new List();
-      question1.add("Wrong1");
-      question1.add("Wrong2");
-      question1.add("Wrong3");
-      question1.add("Right");
 
-      question2.add("Wrong4");
-      question2.add("Wrong5");
-      question2.add("Wrong6");
-      question2.add("Right2");
+      questionsInit();
+      Future<List<Question>> questions = database.questions();
+//      print(await questions);
+//      print(await questions);
+//      print(await questions);
+//      print(await questions);
+//      print(await questions);
+      List<Question> q = await questions;
+      question1.add(q[0].answerA);
+      question1.add(q[0].answerB);
+      question1.add(q[0].answerC);
+      question1.add(q[0].answerD);
+      question2.add(q[1].answerA);
+      question2.add(q[1].answerB);
+      question2.add(q[1].answerC);
+      question2.add(q[1].answerD);
       question1.shuffle();
       question2.shuffle();
-
-
       choices.add(question1);
       choices.add(question2);
+      print(q[0].question);
+      print('lalalala');
     }
+
 }
 
 class Quiz1 extends StatefulWidget{
