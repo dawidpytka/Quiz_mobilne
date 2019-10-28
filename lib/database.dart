@@ -31,24 +31,24 @@ class Question {
   // each dog when using the print statement.
   @override
   String toString() {
-    return 'Dog{id: $id, question: $question, answerA: $answerA, answerB: $answerB, answerC: $answerC,answerD: $answerD,correct: $correctAnswer}';
+    return 'Question{id: $id, question: $question, answerA: $answerA, answerB: $answerB, answerC: $answerC,answerD: $answerD,correct: $correctAnswer}';
   }
 }
 
-Future<Database> database;
-void getDatabase()async {
+Future<Database> questionsDatabase;
+Future<void> getDatabase()async {
 
   // Open the database and store the reference.
-  database = openDatabase(
+  questionsDatabase = openDatabase(
     // Set the path to the database. Note: Using the `join` function from the
     // `path` package is best practice to ensure the path is correctly
     // constructed for each platform.
-    join(await getDatabasesPath(), 'questions_database.db'),
+    join(await getDatabasesPath(), 'quiz_db.db'),
     // When the database is first created, create a table to store dogs.
     onCreate: (db, version) {
       // Run the CREATE TABLE statement on the database.
       return db.execute(
-        "CREATE TABLE questions(id INTEGER PRIMARY KEY, question TEXT, answerA TEXT, answerB TEXT, answerC TEXT, answerD TEXT, correctAnswer TEXT)",
+        "CREATE TABLE Questions(id INTEGER PRIMARY KEY, question TEXT, answerA TEXT, answerB TEXT, answerC TEXT, answerD TEXT, correctAnswer TEXT)",
       );
     },
     // Set the version. This executes the onCreate function and provides a
@@ -61,7 +61,7 @@ void getDatabase()async {
 // Define a function that inserts dogs into the database
 Future<void> insertQuestion(Question question) async {
   // Get a reference to the database.
-  final Database db = await database;
+  final Database db = await questionsDatabase;
 
   // Insert the Dog into the correct table. You might also specify the
   // `conflictAlgorithm` to use in case the same dog is inserted twice.
@@ -74,9 +74,9 @@ Future<void> insertQuestion(Question question) async {
   );
 }
 
-Future<List<Question>> questions() async {
+Future<List<Question>> getQuestions() async {
   // Get a reference to the database.
-  final Database db = await database;
+  final Database db = await questionsDatabase;
 
   // Query the table for all The Dogs.
   final List<Map<String, dynamic>> maps = await db.query('questions');
@@ -97,7 +97,7 @@ Future<List<Question>> questions() async {
 
 Future<void> updateQuestion(Question question) async {
   // Get a reference to the database.
-  final db = await database;
+  final db = await questionsDatabase;
 
   // Update the given Question.
   await db.update(
@@ -112,7 +112,7 @@ Future<void> updateQuestion(Question question) async {
 
 Future<void> deleteQuestion(int id) async {
   // Get a reference to the database.
-  final db = await database;
+  final db = await questionsDatabase;
 
   // Remove the Question from the database.
   await db.delete(

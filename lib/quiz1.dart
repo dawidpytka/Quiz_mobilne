@@ -3,12 +3,11 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/database.dart';
-import 'package:quiz/database.dart' as database;
-import 'database.dart';
+
 
 
 var questionNumber = 0;
-var quiz = new Quiz();
+
 
 
 void questionsInit() async
@@ -66,8 +65,6 @@ void questionsInit() async
   await insertQuestion(question4);
   await insertQuestion(question5);
 
-  print(await questions());
-
 }
 
 class Quiz{
@@ -96,43 +93,49 @@ class Quiz{
 //      question2.shuffle();
 //      questionsInit();
       getList();
-//      List<Question> questions = new List<Question>();
-//      questions.addAll(database.questions() as Iterable<Question>);
-//      print(questions[0].id);
-
-
-
 
 //      choices.add(question1);
 //      choices.add(question2);
     }
 
     void getList()async{
+      await getDatabase();
+      //questionsInit();
+      Future<List<Question>> questions = getQuestions();
+      List<Question> q = await questions;
       List question1 = new List();         //for testing , TODO loading questions and answers from file
       List question2 = new List();
 
-      questionsInit();
-      Future<List<Question>> questions = database.questions();
-//      print(await questions);
-//      print(await questions);
-//      print(await questions);
-//      print(await questions);
-//      print(await questions);
-      List<Question> q = await questions;
       question1.add(q[0].answerA);
       question1.add(q[0].answerB);
       question1.add(q[0].answerC);
-      question1.add(q[0].answerD);
-      question2.add(q[1].answerA);
-      question2.add(q[1].answerB);
-      question2.add(q[1].answerC);
-      question2.add(q[1].answerD);
+      question1.add("Right");
+
+      question2.add("Wrong4");
+      question2.add("Wrong5");
+      question2.add("Wrong6");
+      question2.add("Right2");
+
+//      print(await questions);
+//      print(await questions);
+//      print(await questions);
+//      print(await questions);
+//      print(await questions);
+
+//      question1.add(q[0].answerA);
+//      question1.add(q[0].answerB);
+//      question1.add(q[0].answerC);
+//      question1.add(q[0].answerD);
+//      question2.add(q[1].answerA);
+//      question2.add(q[1].answerB);
+//      question2.add(q[1].answerC);
+//      question2.add(q[1].answerD);
       question1.shuffle();
       question2.shuffle();
       choices.add(question1);
       choices.add(question2);
-      print(q[0].question);
-      print('lalalala');
+//      print(q[0].question);
+//      print('lalalala');
     }
 
 }
@@ -145,6 +148,7 @@ class Quiz1 extends StatefulWidget{
 }
 
 class Quiz1State extends State<Quiz1> {
+  var quiz = new Quiz();
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
