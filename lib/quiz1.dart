@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/database.dart';
-
+int points = 0;
 var questionNumber = 0;
 Quiz quiz;
 
@@ -78,7 +78,7 @@ class Quiz1State extends State<Quiz1> {
           child: new Column(
               children: <Widget>[
                 new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
-                new Text ("Pytanie ${questionNumber+1} z ${quiz.questionList.length}",
+                new Text ("Pytanie ${questionNumber+1} z ${quiz.questionList.length} masz tyle $points",
                     style: new TextStyle(
                         fontSize: 25.0
                     )),
@@ -115,12 +115,20 @@ class Quiz1State extends State<Quiz1> {
       questionNumber++;
     });
   }
+  void checkAnswer(var text)
+  {
+    if(text == quiz.questionList[questionNumber].correctAnswer)
+      {
+        points++;
+      }
+
+  }
 
   MaterialButton answerButton(var text)
   {
     return new MaterialButton(
       color: Colors.lightBlueAccent,
-      onPressed: nextQuestion,
+      onPressed: (){checkAnswer(text); nextQuestion();},
       minWidth: MediaQuery.of(context).size.width * 0.4,
       height: 100.0,
       child: new Text(text,
