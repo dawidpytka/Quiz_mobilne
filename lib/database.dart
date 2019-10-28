@@ -68,7 +68,7 @@ Future<void> insertQuestion(Question question) async {
   //
   // In this case, replace any previous data.
   await db.insert(
-    'questions',
+    'Questions',
     question.toMap(),
     conflictAlgorithm: ConflictAlgorithm.replace,
   );
@@ -79,7 +79,7 @@ Future<List<Question>> getQuestions() async {
   final Database db = await questionsDatabase;
 
   // Query the table for all The Dogs.
-  final List<Map<String, dynamic>> maps = await db.query('questions');
+  final List<Map<String, dynamic>> maps = await db.query('Questions');
 
   // Convert the List<Map<String, dynamic> into a List<Question>.
   return List.generate(maps.length, (i) {
@@ -101,7 +101,7 @@ Future<void> updateQuestion(Question question) async {
 
   // Update the given Question.
   await db.update(
-    'questions',
+    'Questions',
     question.toMap(),
     // Ensure that the Question has a matching id.
     where: "id = ?",
@@ -116,7 +116,7 @@ Future<void> deleteQuestion(int id) async {
 
   // Remove the Question from the database.
   await db.delete(
-    'questions',
+    'Questions',
     // Use a `where` clause to delete a specific question.
     where: "id = ?",
     // Pass the Dog's id as a whereArg to prevent SQL injection.
