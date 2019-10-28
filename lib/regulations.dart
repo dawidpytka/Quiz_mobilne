@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:pdftron_flutter/pdftron_flutter.dart';
 
 
-
 class Viewer extends StatefulWidget {
   @override
   _ViewerState createState() => _ViewerState();

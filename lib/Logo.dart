@@ -1,9 +1,10 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quiz/Opening.dart';
-import 'package:quiz/Routes.dart';
 
-import 'dart:async';
+import './Opening.dart';
+import './Routes.dart';
+
 
 class Logo extends StatefulWidget{
   @override

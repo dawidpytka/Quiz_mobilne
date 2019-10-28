@@ -7,17 +7,12 @@ class Question {
   final int id;
   final String question;
   final List<String> answers;
-//  final String answerA;
-//  final String answerB;
-//  final String answerC;
-//  final String answerD;
   final String correctAnswer;
 //  final String description;
 
 
   Question({this.id, this.question, this.answers, this.correctAnswer});
-//  Question({this.id,this.question, this.answerA, this.answerB,this.answerC,this.answerD,this.correctAnswer});
-//  Question({this.id,this.question, this.answerA, this.answerB,this.answerC,this.answerD,this.correctAnswer,this.description});
+//  Question({this.id,this.question, this.answers, this.correctAnswer,this.description});
 
 
   Map<String, dynamic> toMap() {
@@ -60,7 +55,6 @@ Future<void> getDatabase()async {
     version: 1,
   );
 }
-
 
 // Define a function that inserts dogs into the database
 Future<void> insertQuestion(Question question) async {
@@ -124,8 +118,3 @@ Future<void> deleteQuestion(int id) async {
     whereArgs: [id],
   );
 }
-
-
-
-
-

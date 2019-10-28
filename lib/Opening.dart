@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:ui';
-import './Home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -36,10 +35,9 @@ class OpeningState extends State<Opening>{
 //        Navigator.push(context, ScaleRoute(page: new Home()),);
 //      },
       child: new Scaffold(
-
-      backgroundColor: Color.fromRGBO(255, 255, 255, 0.9),
-      body: new Container(
-        child: new Column(
+        backgroundColor: Color.fromRGBO(255, 255, 255, 0.9),
+        body: new Container(
+          child: new Column(
             children: <Widget>[
               new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.01)),
               new Row(
@@ -57,16 +55,14 @@ class OpeningState extends State<Opening>{
               new Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                  new Image.asset("assets/images/quiz-icon.png",
-                  scale:1.7),
-              ]
+                  children: <Widget>[
+                    new Image.asset("assets/images/quiz-icon.png",
+                        scale:1.7),
+                  ]
               )
             ]
         )
       ),
     )));
-
   }
-
 }

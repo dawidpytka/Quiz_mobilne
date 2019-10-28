@@ -1,64 +1,29 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz/database.dart';
+
+import './database.dart';
+import './Result.dart';
+
 int points = 0;
 var questionNumber = 0;
 Quiz quiz;
 
 class Quiz{
-//  var questions = [
-//    "Placeholder question ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
-//    "Placeholder question 2"
-//  ];
-
   List<Question> questionList;
 
-
-//  List choices = new List();
-//  var correctAnswers = [
-//    "Right, Right2"
-//  ];
-//  List question1;
-//  List question2;
-
     Quiz() {
-
-
-
-
       getList();
-
-
     }
 
     void getList()async{
       await getDatabase();
       questionList = await getQuestions();
-
-//      question1 = new List();
-//      question2 = new List();
-//
-//
-//      question1.add(q[0].answers[0]);
-//      question1.add(q[0].answers[1]);
-//      question1.add(q[0].answers[2]);
-//      question1.add(q[0].answers[3]);
-//      question2.add(q[1].answers[0]);
-//      question2.add(q[1].answers[1]);
-//      question2.add(q[1].answers[2]);
-//      question2.add(q[1].answers[3]);
       for(var i in questionList)
         {
           i.answers.shuffle();
         }
-
-
-//      choices.add(question1);
-//      choices.add(question2);
     }
-
 }
 
 class Quiz1 extends StatefulWidget{
@@ -112,16 +77,20 @@ class Quiz1State extends State<Quiz1> {
   void nextQuestion()
   {
     setState(() {
-      questionNumber++;
+      if(questionNumber == quiz.questionList.length-1)
+        {
+          Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Result()));
+        }
+      else questionNumber++;
     });
   }
+
   void checkAnswer(var text)
   {
     if(text == quiz.questionList[questionNumber].correctAnswer)
       {
         points++;
       }
-
   }
 
   MaterialButton answerButton(var text)

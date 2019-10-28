@@ -1,12 +1,9 @@
 import 'dart:ui';
-import 'package:quiz/regulations.dart';
-
-import './quiz1.dart';
-import './regulations.dart';
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import './regulations.dart';
+import './quiz1.dart';
 
 
 class Home extends StatefulWidget{
@@ -16,8 +13,6 @@ class Home extends StatefulWidget{
   }
 }
 
-
-
 class HomeState extends State<Home>{
   @override
   Widget build(BuildContext context) {
@@ -25,21 +20,20 @@ class HomeState extends State<Home>{
       body: new Stack(
         children: <Widget>[
           Container(
-            child :new Image.asset(
-        'assets/images/logo-PL-tlo.jpeg',
-        fit: BoxFit.cover,
-        height: double.infinity,
-        width: double.infinity,
-        alignment: Alignment.center,
-          )
+              child :new Image.asset(
+                'assets/images/logo-PL-tlo.jpeg',
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+                alignment: Alignment.center,
+              )
           ),
           Center(
             child: Container(
               child:new Column(
                 children: <Widget>[
-                 new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.15)
-                 ),
-
+                  new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.15)
+                  ),
                   startGameButton('Rozpocznij grę'),
                   new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
                   infoButton("Informacje o politechnice"),
@@ -48,7 +42,6 @@ class HomeState extends State<Home>{
             )
           )
         ],
-
       )
     );
   }
