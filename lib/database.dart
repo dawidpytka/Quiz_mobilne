@@ -6,24 +6,28 @@ import 'package:sqflite/sqflite.dart';
 class Question {
   final int id;
   final String question;
-  final String answerA;
-  final String answerB;
-  final String answerC;
-  final String answerD;
+  final List<String> answers;
+//  final String answerA;
+//  final String answerB;
+//  final String answerC;
+//  final String answerD;
   final String correctAnswer;
 //  final String description;
 
-  Question({this.id,this.question, this.answerA, this.answerB,this.answerC,this.answerD,this.correctAnswer});
+
+  Question({this.id, this.question, this.answers, this.correctAnswer});
+//  Question({this.id,this.question, this.answerA, this.answerB,this.answerC,this.answerD,this.correctAnswer});
 //  Question({this.id,this.question, this.answerA, this.answerB,this.answerC,this.answerD,this.correctAnswer,this.description});
+
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'question': question,
-      'answerA': answerA,
-      'answerB': answerB,
-      'answerC': answerC,
-      'answerD': answerD,
+      'answerA': answers[0],
+      'answerB': answers[1],
+      'answerC': answers[2],
+      'answerD': answers[3],
       'correctAnswer': correctAnswer,
     };
   }
@@ -31,7 +35,7 @@ class Question {
   // each dog when using the print statement.
   @override
   String toString() {
-    return 'Question{id: $id, question: $question, answerA: $answerA, answerB: $answerB, answerC: $answerC,answerD: $answerD,correct: $correctAnswer}';
+    return 'Question{id: $id, question: $question, answerA: $answers[0], answerB: $answers[1], answerC: $answers[2],answerD: $answers[3],correct: $correctAnswer}';
   }
 }
 
@@ -86,10 +90,7 @@ Future<List<Question>> getQuestions() async {
     return Question(
       id: maps[i]['id'],
       question: maps[i]['question'],
-      answerA: maps[i]['answerA'],
-      answerB: maps[i]['answerB'],
-      answerC: maps[i]['answerC'],
-      answerD: maps[i]['answerD'],
+      answers: [maps[i]['answerA'],maps[i]['answerB'],maps[i]['answerC'],maps[i]['answerD']],
       correctAnswer: maps[i]['correctAnswer'],
     );
   });
