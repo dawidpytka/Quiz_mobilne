@@ -109,62 +109,47 @@ class Quiz1State extends State<Quiz1> {
   }
 }
 
-//void questionsInit() async
-//{
-//  var question1 = Question(
-//      id: 1,
-//      question: 'Ile lat ma Politechnika Lodzka',
-//      answerA: '35',
-//      answerB: '67',
-//      answerC: '89',
-//      answerD: '74',
-//      correctAnswer: '74'
-//  );
-//
-//  var question2 = Question(
-//      id: 2,
-//      question: 'Ile wydzialow ma Politechnika Lodzka',
-//      answerA: '10',
-//      answerB: '11',
-//      answerC: '17',
-//      answerD: '9',
-//      correctAnswer: '9'
-//  );
-//  var question3 = Question(
-//      id: 3,
-//      question: 'Ile kierunkow studiow ma Politechnika Lodzka',
-//      answerA: '30',
-//      answerB: '35',
-//      answerC: '22',
-//      answerD: '45',
-//      correctAnswer: '45'
-//  );
-//
-//  var question4 = Question(
-//      id: 4,
-//      question: 'Ilu profesorow posiada Politechnika Lodzka',
-//      answerA: '200',
-//      answerB: '211',
-//      answerC: '222',
-//      answerD: '229',
-//      correctAnswer: '229'
-//  );
-//  var question5 = Question(
-//      id: 5,
-//      question: 'Na jakim wydziale naucza dr Kossowski',
-//      answerA: 'WEEIA',
-//      answerB: 'FTIMS',
-//      answerC: 'MECHANICZNY',
-//      answerD: 'ELEKTRYCZNY',
-//      correctAnswer: 'FTIMS'
-//  );
-//  await insertQuestion(question1);
-//  await insertQuestion(question2);
-//  await insertQuestion(question3);
-//  await insertQuestion(question4);
-//  await insertQuestion(question5);
-//
-//}
+void questionsInit() async
+{
+  var question1 = Question(
+      id: 1,
+      question: 'Ile lat ma Politechnika Lodzka',
+      answers: ['35','67','89','74'],
+      correctAnswer: '74'
+  );
+
+  var question2 = Question(
+      id: 2,
+      question: 'Ile wydzialow ma Politechnika Lodzka',
+      answers: ['10','11','17','9'],
+      correctAnswer: '9'
+  );
+  var question3 = Question(
+      id: 3,
+      question: 'Ile kierunkow studiow ma Politechnika Lodzka',
+      answers: ['30','35','22','45'],
+      correctAnswer: '45'
+  );
+
+  var question4 = Question(
+      id: 4,
+      question: 'Ilu profesorow posiada Politechnika Lodzka',
+      answers: ['200','211','222','229'],
+      correctAnswer: '229'
+  );
+  var question5 = Question(
+      id: 5,
+      question: 'Na jakim wydziale naucza dr Kossowski',
+      answers: ['WEEIA','FTIMS','MECHANICZNY','ELEKTRYCZNY'],
+      correctAnswer: 'FTIMS'
+  );
+  await insertQuestion(question1);
+  await insertQuestion(question2);
+  await insertQuestion(question3);
+  await insertQuestion(question4);
+  await insertQuestion(question5);
+
+}
 
 
 
