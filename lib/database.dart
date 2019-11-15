@@ -5,25 +5,29 @@ import 'package:sqflite/sqflite.dart';
 
 class Question {
   final int id;
+  final int stageNumber;
   final String question;
   final List<String> answers;
   final String correctAnswer;
+  int done;
 //  final String description;
 
 
-  Question({this.id, this.question, this.answers, this.correctAnswer});
+  Question({this.id, this.stageNumber, this.question, this.answers, this.correctAnswer, this.done});
 //  Question({this.id,this.question, this.answers, this.correctAnswer,this.description});
 
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
+      'stageNumber': stageNumber,
       'question': question,
       'answerA': answers[0],
       'answerB': answers[1],
       'answerC': answers[2],
       'answerD': answers[3],
       'correctAnswer': correctAnswer,
+      'done': done,
     };
   }
   // Implement toString to make it easier to see information about
@@ -42,12 +46,12 @@ Future<void> getDatabase()async {
     // Set the path to the database. Note: Using the `join` function from the
     // `path` package is best practice to ensure the path is correctly
     // constructed for each platform.
-    join(await getDatabasesPath(), 'quiz_db.db'),
+    join(await getDatabasesPath(), 'quiz_db2.db'),
     // When the database is first created, create a table to store dogs.
     onCreate: (db, version) {
       // Run the CREATE TABLE statement on the database.
       return db.execute(
-        "CREATE TABLE Questions(id INTEGER PRIMARY KEY, question TEXT, answerA TEXT, answerB TEXT, answerC TEXT, answerD TEXT, correctAnswer TEXT)",
+        "CREATE TABLE Questions(id INTEGER PRIMARY KEY, stageNumber INTEGER, question TEXT, answerA TEXT, answerB TEXT, answerC TEXT, answerD TEXT, correctAnswer TEXT, done INTEGER)",
       );
     },
     // Set the version. This executes the onCreate function and provides a
@@ -83,9 +87,11 @@ Future<List<Question>> getQuestions() async {
   return List.generate(maps.length, (i) {
     return Question(
       id: maps[i]['id'],
+      stageNumber: maps[i]['stageNumber'],
       question: maps[i]['question'],
       answers: [maps[i]['answerA'],maps[i]['answerB'],maps[i]['answerC'],maps[i]['answerD']],
       correctAnswer: maps[i]['correctAnswer'],
+      done: maps[i]['done']
     );
   });
 }

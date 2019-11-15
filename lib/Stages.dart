@@ -1,11 +1,11 @@
 import 'dart:ui';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:quiz/quiz1.dart';
 
 int stageNumber = 3;
 
 class Stage extends StatefulWidget{
+  static int index=1;
   @override
   State<StatefulWidget> createState() {
     return new StageState();
@@ -63,7 +63,7 @@ class StageState extends State<Stage>{
     else return Colors.grey;
   }
 
-
+//  int index;
   SizedBox stageButton(var text)
   {
     return new SizedBox(
@@ -71,7 +71,10 @@ class StageState extends State<Stage>{
       height: 35.0,
       child: new RaisedButton(
         color: color(text),
-        onPressed: startQuiz1,
+        onPressed: () {
+          Stage.index = stagesNames.indexOf(text)+1;
+          startQuiz1();
+          },
         child: new Text(text,
           style: new TextStyle(
               color: Colors.black
@@ -89,6 +92,8 @@ class StageState extends State<Stage>{
     });
   }
 }
+
+
 
 List<String> stagesNames = [
   "Etap 1: Wstęp",

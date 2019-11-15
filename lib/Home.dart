@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import './regulations.dart';
+import 'Stages.dart';
 import './quiz1.dart';
 
 
@@ -77,7 +78,7 @@ class HomeState extends State<Home>{
   }
   void startQuiz1(){
     setState(() {
-      Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz1()));
+      Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Stage()));
     });
   }
 
