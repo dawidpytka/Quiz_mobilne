@@ -93,6 +93,12 @@ class StageState extends State<Stage>{
   }
 }
 
+bool checkIfComplete(int stageNumber)
+{
+
+  return true;
+}
+
 
 
 List<String> stagesNames = [

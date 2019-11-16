@@ -1,15 +1,16 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:quiz/database.dart';
+import './questionsData.dart';
 import './regulations.dart';
 import 'Stages.dart';
-import './quiz1.dart';
 
 
 class Home extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
+    QuestionsData.getInstance();
     return new HomeState();
   }
 }
