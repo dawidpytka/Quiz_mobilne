@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:quiz/questionsData.dart';
 import 'package:quiz/quiz1.dart';
 
 int stageNumber = 3;
@@ -63,7 +64,6 @@ class StageState extends State<Stage>{
     else return Colors.grey;
   }
 
-//  int index;
   SizedBox stageButton(var text)
   {
     return new SizedBox(
@@ -73,7 +73,10 @@ class StageState extends State<Stage>{
         color: color(text),
         onPressed: () {
           Stage.index = stagesNames.indexOf(text)+1;
-          startQuiz1();
+          if(checkIfComplete(Stage.index))
+            {
+              startQuiz1();
+            }
           },
         child: new Text(text,
           style: new TextStyle(
@@ -95,9 +98,18 @@ class StageState extends State<Stage>{
 
 bool checkIfComplete(int stageNumber)
 {
-
-  return true;
+  if(stageNumber > stageNumber) {
+    return false;
+  }
+  for(var question in QuestionsData.getInstance().questionsStage[stageNumber])
+  {
+    if(question.done == 0)
+      return true;
+  }
+  return false;
 }
+
+
 
 
 
