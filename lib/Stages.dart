@@ -57,9 +57,9 @@ class StageState extends State<Stage>{
 
   Color color(var text)
   {
-    if(stagesNames.indexOf(text)<stageNumber)
+    if(stagesNames.indexOf(text) < stageNumber)
       return Colors.pink;
-    else if(stagesNames.indexOf(text)==stageNumber)
+    else if(stagesNames.indexOf(text) == stageNumber)
       return Colors.green;
     else return Colors.grey;
   }
