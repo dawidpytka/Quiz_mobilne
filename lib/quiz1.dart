@@ -8,13 +8,14 @@ import './database.dart';
 import './Result.dart';
 import 'Stages.dart';
 
-var _firstPress = true ;
+bool blockButtons = false;
 int questionNumber = 0;
 Quiz quiz;
 var answerColor = Colors.lightBlueAccent;
 bool wVisible = false;
 bool cVisible = false;
 class Quiz{
+
   int points = 0;
   List<Question> questionList;
   List<Question> questionsStage ;
@@ -76,7 +77,6 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         cVisible = false;
         sleep(Duration(seconds: 1));
         nextQuestion();
-
       }
     });
   }
@@ -85,58 +85,60 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        child:Scaffold(
-      backgroundColor: _animation.value,
-        body: new Container(
-          margin: EdgeInsets.all(MediaQuery.of(context).size.height*0.01),
-          child: new Column(
-              children: <Widget>[
-                new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
-                new Text ("Pytanie ${questionNumber+1} z ${quiz.questionsStage.length} \n masz ${quiz.points} punktów", textAlign: TextAlign.center,
-                    style: new TextStyle(
-                        fontSize: 30.0
-                    )),
-                new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.06)),
-                new AnimatedOpacity(opacity: wVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 250),child:Text("Zła odpowiedź !", style: new TextStyle(fontSize:30.0))),
-                new AnimatedOpacity(opacity: cVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 250),child:Text("Poprawna odpowiedź !", style: new TextStyle(fontSize:30.0))),
-                new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
-                new Container(
-                  width: MediaQuery.of(context).size.width * 0.80,
-                  height: MediaQuery.of(context).size.height * 0.13,
-                  child: Text ("${quiz.questionsStage[questionNumber].question}",textAlign: TextAlign.center,
-                      style: new TextStyle(
-                          fontSize:18.0,
-                      )),
-                ),
-                new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
-                new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    answerButton(quiz.questionsStage[questionNumber].answers[0]),
-                    answerButton(quiz.questionsStage[questionNumber].answers[1])
+        child:AbsorbPointer(
+          absorbing: blockButtons,
+          child:Scaffold(
+              backgroundColor: _animation.value,
+              body: new Container(
+                  margin: EdgeInsets.all(MediaQuery.of(context).size.height*0.01),
+                  child: new Column(
+                      children: <Widget>[
+                        new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
+                        new Text ("Pytanie ${questionNumber+1} z ${quiz.questionsStage.length} \n masz ${quiz.points} punktów", textAlign: TextAlign.center,
+                            style: new TextStyle(
+                                fontSize: 30.0
+                            )),
+                        new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.06)),
+                        new AnimatedOpacity(opacity: wVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 250),child:Text("Zła odpowiedź !", style: new TextStyle(fontSize:30.0))),
+                        new AnimatedOpacity(opacity: cVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 250),child:Text("Poprawna odpowiedź !", style: new TextStyle(fontSize:30.0))),
+                        new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
+                        new Container(
+                          width: MediaQuery.of(context).size.width * 0.80,
+                          height: MediaQuery.of(context).size.height * 0.13,
+                          child: Text ("${quiz.questionsStage[questionNumber].question}",textAlign: TextAlign.center,
+                              style: new TextStyle(
+                                fontSize:18.0,
+                              )),
+                        ),
+                        new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
+                        new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            answerButton(quiz.questionsStage[questionNumber].answers[0]),
+                            answerButton(quiz.questionsStage[questionNumber].answers[1])
 
-                 ],
-                ),
-                new Padding(padding: EdgeInsets.only(top:20.0)),
-                new Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      answerButton(quiz.questionsStage[questionNumber].answers[2]),
-                      answerButton(quiz.questionsStage[questionNumber].answers[3])
+                          ],
+                        ),
+                        new Padding(padding: EdgeInsets.only(top:20.0)),
+                        new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            answerButton(quiz.questionsStage[questionNumber].answers[2]),
+                            answerButton(quiz.questionsStage[questionNumber].answers[3])
 
-                    ],
-                )
+                          ],
+                        )
                       ]
-          )
-        )
-    ),
+                  )
+              )
+          ),
+        ),
       onWillPop: () {
         return Future.value(false); // if true allow back else block it
       },
     );
 
   }
-
 
   void nextQuestion()
   {
@@ -145,8 +147,12 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
       {
         Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Result()));
       }
-      else questionNumber++;
-    });
+      else{
+        questionNumber++;
+      }
+      blockButtons = false;
+    }
+    );
   }
 
   void checkAnswer(var text)
@@ -173,12 +179,13 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
 
   Container answerButton(var text)
   {
-
     return Container(
       width: MediaQuery.of(context).size.width * 0.45
       ,
       height: MediaQuery.of(context).size.height * 0.13, //multiply the static height value with current animation.value value
-      child: RaisedButton(
+      child:AbsorbPointer(
+        absorbing: blockButtons,
+       child:RaisedButton(
         color: Colors.lightBlueAccent,
         child: Text(text,
           textAlign: TextAlign.center,
@@ -186,14 +193,12 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
           maxLines: 5,
         ),
         onPressed: () {
-
-
+              blockButtons = true;
               checkAnswer(text);
               _animationController
                   .forward(); // tapping the button, starts the animation.
-
-
         },
+      ),
       ),
     );}
 }
