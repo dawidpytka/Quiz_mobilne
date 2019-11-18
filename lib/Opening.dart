@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:quiz/Home.dart';
-import 'package:quiz/Routes.dart';
+import 'Home.dart';
+import 'Routes.dart';
 
 
 class Opening extends StatefulWidget{
@@ -50,7 +50,7 @@ class OpeningState extends State<Opening>{
               ]
               ),
               new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
-              new Text ("QUIZ",textScaleFactor: 4,),
+              new Text ("QuizPOL",textScaleFactor: 4,),
               new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.06)),
               new Row(
                   mainAxisSize: MainAxisSize.max,

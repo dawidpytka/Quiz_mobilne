@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz/database.dart';
+import 'database.dart';
 import './questionsData.dart';
 import './regulations.dart';
 import 'Stages.dart';
@@ -18,7 +18,8 @@ class Home extends StatefulWidget{
 class HomeState extends State<Home>{
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return WillPopScope(
+        child: new Scaffold(
       body: new Stack(
         children: <Widget>[
           Container(
@@ -45,7 +46,12 @@ class HomeState extends State<Home>{
           )
         ],
       )
+    ),
+      onWillPop: () {
+        return Future.value(false); // if true allow back else block it
+      },
     );
+
   }
 
   MaterialButton infoButton(var text)

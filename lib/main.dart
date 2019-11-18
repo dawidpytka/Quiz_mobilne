@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/Logo.dart';
+import 'Logo.dart';
 
 import './quiz1.dart';
 

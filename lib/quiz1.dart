@@ -1,13 +1,14 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart' as prefix0;
 import 'package:flutter/material.dart';
-import 'package:quiz/questionsData.dart';
+import 'questionsData.dart';
 import 'dart:io';
 import './database.dart';
 import './Result.dart';
 import 'Stages.dart';
 
-
+var _firstPress = true ;
 int questionNumber = 0;
 Quiz quiz;
 var answerColor = Colors.lightBlueAccent;
@@ -15,8 +16,8 @@ bool wVisible = false;
 bool cVisible = false;
 class Quiz{
   int points = 0;
-  // List<Question> questionList;
-  List<Question> questionsStage = new List();
+  List<Question> questionList;
+  List<Question> questionsStage ;
 
   int stageMax=0;
     Quiz();
@@ -27,7 +28,14 @@ class Quiz1 extends StatefulWidget{
   State<StatefulWidget> createState() {
     questionNumber=0;
     quiz.points=0;
-    quiz.questionsStage = QuestionsData.getInstance().questionsStage[Stage.index];
+    quiz.questionsStage = new List();
+    for( var question in QuestionsData.getInstance().questionsStage[Stage.index])
+      {
+        if( question.done == 0)
+          quiz.questionsStage.add(question);
+      }
+//    quiz.questionsStage = QuestionsData.getInstance().questionsStage[Stage.index];
+    quiz.questionsStage.shuffle();
     for(var i in quiz.questionsStage) {
       i.answers.shuffle();
     }
@@ -84,16 +92,23 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
           child: new Column(
               children: <Widget>[
                 new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
-                new Text ("Pytanie ${questionNumber+1} z ${Stage.index} masz tyle ${quiz.points}",
+                new Text ("Pytanie ${questionNumber+1} z ${quiz.questionsStage.length} \n masz ${quiz.points} punktów", textAlign: TextAlign.center,
                     style: new TextStyle(
-                        fontSize: 25.0
+                        fontSize: 30.0
                     )),
-                new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.08)),
+                new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.06)),
                 new AnimatedOpacity(opacity: wVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 250),child:Text("Zła odpowiedź !", style: new TextStyle(fontSize:30.0))),
                 new AnimatedOpacity(opacity: cVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 250),child:Text("Poprawna odpowiedź !", style: new TextStyle(fontSize:30.0))),
-                new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.08)),
-                new Text ("${quiz.questionsStage[questionNumber].question}"),
-                new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
+                new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
+                new Container(
+                  width: MediaQuery.of(context).size.width * 0.80,
+                  height: MediaQuery.of(context).size.height * 0.13,
+                  child: Text ("${quiz.questionsStage[questionNumber].question}",textAlign: TextAlign.center,
+                      style: new TextStyle(
+                          fontSize:18.0,
+                      )),
+                ),
+                new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -168,12 +183,16 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         child: Text(text,
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 15.0),
-          maxLines: 2,
+          maxLines: 5,
         ),
         onPressed: () {
-          checkAnswer(text);
-          _animationController
-              .forward(); // tapping the button, starts the animation.
+
+
+              checkAnswer(text);
+              _animationController
+                  .forward(); // tapping the button, starts the animation.
+
+
         },
       ),
     );}
