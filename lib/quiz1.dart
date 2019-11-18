@@ -8,7 +8,6 @@ import './database.dart';
 import './Result.dart';
 import 'Stages.dart';
 
-bool blockButtons = false;
 int questionNumber = 0;
 Quiz quiz;
 var answerColor = Colors.lightBlueAccent;
@@ -46,6 +45,7 @@ class Quiz1 extends StatefulWidget{
 
 class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
   //Uses a Ticker Mixin for Animations
+  bool blockButtons = false;
   Animation _animation;
   AnimationController _animationController;
 
@@ -56,7 +56,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         vsync: this,
         duration: Duration(
             milliseconds:
-            250)); //specify the duration for the animation & include `this` for the vsyc
+            1250)); //specify the duration for the animation & include `this` for the vsyc
     _animation = ColorTween(begin: Colors.white, end: Colors.white).animate(
         _animationController); //use Tween animation here, to animate between the values of 1.0 & 2.5.
 
@@ -75,7 +75,6 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
             .reverse(); //reverse the animation back here if its completed
         wVisible = false;
         cVisible = false;
-        sleep(Duration(seconds: 1));
         nextQuestion();
       }
     });
@@ -99,8 +98,8 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
                                 fontSize: 30.0
                             )),
                         new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.06)),
-                        new AnimatedOpacity(opacity: wVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 250),child:Text("Zła odpowiedź !", style: new TextStyle(fontSize:30.0))),
-                        new AnimatedOpacity(opacity: cVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 250),child:Text("Poprawna odpowiedź !", style: new TextStyle(fontSize:30.0))),
+                        new AnimatedOpacity(opacity: wVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 1000),child:Text("Zła odpowiedź !", style: new TextStyle(fontSize:30.0))),
+                        new AnimatedOpacity(opacity: cVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 1000),child:Text("Poprawna odpowiedź !", style: new TextStyle(fontSize:30.0))),
                         new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
                         new Container(
                           width: MediaQuery.of(context).size.width * 0.80,
