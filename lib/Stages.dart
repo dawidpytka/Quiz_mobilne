@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'questionsData.dart';
 import 'quiz1.dart';
 
-int stageNumber = 5;
+int unlockedStage = 1;
 
 class Stage extends StatefulWidget{
   static int index=1;
@@ -17,80 +17,55 @@ class StageState extends State<Stage>{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Colors.black26,
-        body: new SingleChildScrollView(
-        //margin: EdgeInsets.all(MediaQuery.of(context).size.height*0.01),
-        child: new Column(
-          children: <Widget>[
-            new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.08)),
-            new Text("Przejdz wszystkie etapy, aby rozpoczac nowe wyzwania !",
-            style: new TextStyle(
-              color: Colors.white,
-              fontSize: 22.0,
-              fontFamily: 'Verdana',
-              fontWeight: FontWeight.bold
-            ),
-              textAlign: TextAlign.center,
-            ),
-            new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.06)),
-            for ( var i in getStageButtonList(stagesNames) ) i,
-
-          ],
-        ),
-      )
+      backgroundColor: Colors.white,
+      body: ListView(
+        children: <Widget>[
+          for(var i in getTileList(stagesNames)) i
+        ],
+      ),
     );
   }
 
-
-  List<Widget> buttonList;
-  List<Widget> getStageButtonList(List<String> stagesNames)
-  {
-    buttonList = new List<Widget>();
-    for(var name in stagesNames)
+    List<Widget> getTileList(List<String> stagesNames) {
+      IconData icon;
+      List<Widget> tileList = new List<Widget>();
+      for(int i =1;i<stagesNames.length+1;i++)
       {
-        buttonList.add(stageButton(name));
-        buttonList.add(new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.01)));
+        if(checkIfNotComplete(i))
+          {
+            icon = Icons.lock_open;
+          }
+        else if(checkIfAvailable(i) == true)
+          {
+            icon = Icons.lock;
+          }
+        else
+          {
+            icon = Icons.done;
+          }
+        tileList.add(_tile(stagesNames[i-1],QuestionsData.getInstance().stagePercentage[i].toString(),icon));
       }
-    return buttonList;
-  }
+      return tileList;
+    }
 
+  ListTile _tile(String title, String subtitle, IconData icon) => ListTile(
+    title: Text(title,
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          fontSize: 15,
+        )),
+    subtitle: Text(subtitle),
+    leading: Icon(
+      icon,
+      color: Colors.blue[500],
+    ),
+    enabled: checkIfNotComplete(stagesNames.indexOf(title)+1),
+    onTap: () {
+      Stage.index = stagesNames.indexOf(title)+1;
+      startQuiz1();
+    }
+  );
 
-  Color color(var text)
-  {
-    if(stagesNames.indexOf(text) < stageNumber)
-      {
-        if(checkIfComplete(stagesNames.indexOf(text)+1))
-          return Colors.pink;
-        return Colors.green;
-      }
-    else if(stagesNames.indexOf(text) >= stageNumber)
-      return Colors.grey;
-  }
-
-  SizedBox stageButton(var text)
-  {
-    return new SizedBox(
-      width:MediaQuery.of(context).size.width * 0.9,
-      height: 35.0,
-      child: new RaisedButton(
-        color: color(text),
-        onPressed: () {
-          Stage.index = stagesNames.indexOf(text)+1;
-          if(checkIfComplete(Stage.index))
-            {
-              startQuiz1();
-            }
-          },
-        child: new Text(text,
-          style: new TextStyle(
-              color: Colors.black
-          ),
-          textAlign: TextAlign.center,
-        ),
-
-      )
-    );
-  }
 
   void startQuiz1(){
     setState(() {
@@ -99,17 +74,22 @@ class StageState extends State<Stage>{
   }
 }
 
-bool checkIfComplete(int stageNumber)
+bool checkIfNotComplete(int stageNumber)
 {
-  if(stageNumber > stageNumber) {
-    return false;
-  }
   for(var question in QuestionsData.getInstance().questionsStage[stageNumber])
   {
     if(question.done == 0)
       return true;
   }
   return false;
+}
+
+bool checkIfAvailable(int number)
+{
+  if(number <= unlockedStage) {
+    return false;
+  }
+  return true;
 }
 
 
