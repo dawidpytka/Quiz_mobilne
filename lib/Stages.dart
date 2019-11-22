@@ -57,7 +57,6 @@ class StageState extends State<Stage>{
 
   Color color(var text)
   {
-
     if(stagesNames.indexOf(text) < stageNumber)
       {
         if(checkIfComplete(stagesNames.indexOf(text)+1))

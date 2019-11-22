@@ -1,18 +1,23 @@
-import 'Stages.dart' as prefix0;
-
 import "database.dart";
 
 class QuestionsData{
   static QuestionsData instance = new QuestionsData();
   List<Question> questionList;
-  List<List<Question>> questionsStage = new List.generate(prefix0.stageNumber+1,(i) => []);
-
+  static int stageCount = 16;
+  List<List<Question>> questionsStage = new List.generate(stageCount+1,(i) => []);
+  Map stageAttempts = new Map();
+  Map stagePercentage = new Map();
   QuestionsData(){
     getList();
+    for(int i=1;i<stageCount+1;i++)
+      {
+        stageAttempts[i] = 0;
+        stagePercentage[i] = 0;
+      }
   }
   void getList() async{
     await getDatabase();
-    //await questionsInit();
+    await questionsInit();
     questionList = await getQuestions();
     for(var question in questionList)
       {

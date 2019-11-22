@@ -1,9 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/cupertino.dart' as prefix0;
 import 'package:flutter/material.dart';
 import 'questionsData.dart';
-import 'dart:io';
 import './database.dart';
 import './Result.dart';
 import 'Stages.dart';
@@ -26,10 +24,11 @@ class Quiz{
 class Quiz1 extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
+    QuestionsData.getInstance().stageAttempts[Stage.index]+=1;
     questionNumber=0;
     quiz.points=0;
     quiz.questionsStage = new List();
-    for( var question in QuestionsData.getInstance().questionsStage[Stage.index])
+    for(var question in QuestionsData.getInstance().questionsStage[Stage.index])
       {
         if( question.done == 0)
           quiz.questionsStage.add(question);
@@ -76,6 +75,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         wVisible = false;
         cVisible = false;
         nextQuestion();
+
       }
     });
   }
@@ -188,6 +188,8 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         color: Colors.lightBlueAccent,
         child: Text(text,
           textAlign: TextAlign.center,
+
+
           style: TextStyle(fontSize: 15.0),
           maxLines: 5,
         ),

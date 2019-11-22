@@ -13,6 +13,12 @@ class Result extends StatefulWidget{
 }
 
 class ResultState extends State<Result> {
+  int updateCompletionPercentage()
+  {
+    int percentage = (100-(quiz.questionsStage.length-quiz.points)/QuestionsData.getInstance().questionsStage[Stage.index].length*100).round();
+    QuestionsData.getInstance().stagePercentage[Stage.index] = percentage;
+    return percentage;
+  }
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -26,10 +32,17 @@ class ResultState extends State<Result> {
                 children: <Widget>[
                 new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
                 new Text(
-                    "Zdobyles ${quiz.points} punktow. Gratulacje ! Zaliczyłeś ${(100-(quiz.questionsStage.length-quiz.points)/QuestionsData.getInstance().questionsStage[Stage.index].length*100).round()}% etapu nr ${Stage.index}",
+                    "Podejscie nr ${QuestionsData.getInstance().stageAttempts[Stage.index]} do etapu nr ${Stage.index}",
                     textAlign: TextAlign.center,
                     style: new TextStyle(color: Colors.white,fontSize: 50)
                 ),
+                new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
+                new Text(
+                    "Zdobyles ${quiz.points} punktow. Gratulacje ! Zaliczyłeś ${updateCompletionPercentage()}% etapu!",
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(color: Colors.white,fontSize: 50)
+                ),
+
                   new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
                 new Center(
                   child: new MaterialButton(
