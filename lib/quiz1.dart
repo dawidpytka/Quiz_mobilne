@@ -33,7 +33,6 @@ class Quiz1 extends StatefulWidget{
         if( question.done == 0)
           quiz.questionsStage.add(question);
       }
-//    quiz.questionsStage = QuestionsData.getInstance().questionsStage[Stage.index];
     quiz.questionsStage.shuffle();
     for(var i in quiz.questionsStage) {
       i.answers.shuffle();
@@ -44,6 +43,7 @@ class Quiz1 extends StatefulWidget{
 
 class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
   //Uses a Ticker Mixin for Animations
+  int animationNumber = 0;
   bool blockButtons = false;
   Animation _animation;
   AnimationController _animationController;
@@ -55,7 +55,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         vsync: this,
         duration: Duration(
             milliseconds:
-            1250)); //specify the duration for the animation & include `this` for the vsyc
+            500)); //specify the duration for the animation & include `this` for the vsyc
     _animation = ColorTween(begin: Colors.white, end: Colors.white).animate(
         _animationController); //use Tween animation here, to animate between the values of 1.0 & 2.5.
 
@@ -69,14 +69,17 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
     _animation.addStatusListener((status) {
       //AnimationStatus gives the current status of our animation, we want to go back to its previous state after completing its animation
       if (status == AnimationStatus.completed) {
-
         _animationController
-            .reverse(); //reverse the animation back here if its completed
+            .reverse();
         wVisible = false;
         cVisible = false;
-        nextQuestion();
+
 
       }
+      else if(status == AnimationStatus.dismissed)
+        {
+          nextQuestion();
+        }
     });
   }
 
@@ -98,8 +101,8 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
                                 fontSize: 30.0
                             )),
                         new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.06)),
-                        new AnimatedOpacity(opacity: wVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 1000),child:Text("Zła odpowiedź !", style: new TextStyle(fontSize:30.0))),
-                        new AnimatedOpacity(opacity: cVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 1000),child:Text("Poprawna odpowiedź !", style: new TextStyle(fontSize:30.0))),
+                        new AnimatedOpacity(opacity: wVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 500),child:Text("Zła odpowiedź !", style: new TextStyle(fontSize:30.0))),
+                        new AnimatedOpacity(opacity: cVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 500),child:Text("Poprawna odpowiedź !", style: new TextStyle(fontSize:30.0))),
                         new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
                         new Container(
                           width: MediaQuery.of(context).size.width * 0.80,
@@ -197,7 +200,8 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
               blockButtons = true;
               checkAnswer(text);
               _animationController
-                  .forward(); // tapping the button, starts the animation.
+                  .forward();
+//reverse the animation back here if its completed// tapping the button, starts the animation.
         },
       ),
       ),
