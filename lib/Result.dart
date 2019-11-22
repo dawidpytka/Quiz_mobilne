@@ -13,12 +13,6 @@ class Result extends StatefulWidget{
 }
 
 class ResultState extends State<Result> {
-  int updateCompletionPercentage()
-  {
-    int percentage = (100-(quiz.questionsStage.length-quiz.points)/QuestionsData.getInstance().questionsStage[Stage.index].length*100).round();
-    QuestionsData.getInstance().stagePercentage[Stage.index] = percentage;
-    return percentage;
-  }
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -68,7 +62,18 @@ class ResultState extends State<Result> {
     );
   }
 
+  int updateCompletionPercentage()
+  {
+    int percentage = (100-(quiz.questionsStage.length-quiz.points)/QuestionsData.getInstance().questionsStage[Stage.index].length*100).round();
+    QuestionsData.getInstance().stagePercentage[Stage.index] = percentage;
+    return percentage;
+  }
+
   void goBackHome(){
+    if(updateCompletionPercentage() == 100)
+    {
+      QuestionsData.getInstance().unlockedStage++;
+    }
     setState(() {
       Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Home()));
     });

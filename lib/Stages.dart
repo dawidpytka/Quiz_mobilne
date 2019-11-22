@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'questionsData.dart';
 import 'quiz1.dart';
 
-int unlockedStage = 1;
 
 class Stage extends StatefulWidget{
   static int index=1;
@@ -31,11 +30,11 @@ class StageState extends State<Stage>{
       List<Widget> tileList = new List<Widget>();
       for(int i =1;i<stagesNames.length+1;i++)
       {
-        if(checkIfNotComplete(i))
+          if(checkIfCurrentStage(i))
           {
-            icon = Icons.lock_open;
+          icon = Icons.lock_open;
           }
-        else if(checkIfAvailable(i) == true)
+        else if(checkIfNotComplete(i))
           {
             icon = Icons.lock;
           }
@@ -43,7 +42,9 @@ class StageState extends State<Stage>{
           {
             icon = Icons.done;
           }
-        tileList.add(_tile(stagesNames[i-1],QuestionsData.getInstance().stagePercentage[i].toString(),icon));
+        String data = "Dotychczasowe próby:";
+        data += QuestionsData.getInstance().stagePercentage[i].toString();
+        tileList.add(_tile(stagesNames[i-1],data,icon));
       }
       return tileList;
     }
@@ -59,7 +60,13 @@ class StageState extends State<Stage>{
       icon,
       color: Colors.blue[500],
     ),
-    enabled: checkIfNotComplete(stagesNames.indexOf(title)+1),
+    trailing: Text("${QuestionsData.getInstance().stagePercentage[stagesNames.indexOf(title)+1]}%",
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          fontSize: 15,
+        )
+    ),
+    enabled: checkIfCurrentStage(stagesNames.indexOf(title)+1),
     onTap: () {
       Stage.index = stagesNames.indexOf(title)+1;
       startQuiz1();
@@ -84,17 +91,13 @@ bool checkIfNotComplete(int stageNumber)
   return false;
 }
 
-bool checkIfAvailable(int number)
+bool checkIfCurrentStage(int number)
 {
-  if(number <= unlockedStage) {
-    return false;
+  if(number == QuestionsData.getInstance().unlockedStage) {
+    return true;
   }
-  return true;
+  return false;
 }
-
-
-
-
 
 List<String> stagesNames = [
   "Etap 1: Wstęp",
