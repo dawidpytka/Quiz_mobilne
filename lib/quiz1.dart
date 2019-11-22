@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'questionsData.dart';
 import './database.dart';
@@ -91,7 +92,8 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
           absorbing: blockButtons,
           child:Scaffold(
               backgroundColor: _animation.value,
-              body: new Container(
+              body:new OnlyOnePointerRecognizerWidget(
+                child: new Container(
                   margin: EdgeInsets.all(MediaQuery.of(context).size.height*0.01),
                   child: new Column(
                       children: <Widget>[
@@ -132,6 +134,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
                         )
                       ]
                   )
+                )
               )
           ),
         ),
@@ -206,6 +209,51 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
       ),
       ),
     );}
+}
+
+
+class OnlyOnePointerRecognizer extends OneSequenceGestureRecognizer {
+  int _p = 0;
+  @override
+  void addPointer(PointerDownEvent event) {
+    startTrackingPointer(event.pointer);
+    if (_p == 0) {
+      resolve(GestureDisposition.rejected);
+      _p = event.pointer;
+    } else {
+      resolve(GestureDisposition.accepted);
+    }
+  }
+
+  @override
+  String get debugDescription => 'only one pointer recognizer';
+
+  @override
+  void didStopTrackingLastPointer(int pointer) {}
+
+  @override
+  void handleEvent(PointerEvent event) {
+    if (!event.down && event.pointer == _p) {
+      _p = 0;
+    }
+  }
+}
+
+class OnlyOnePointerRecognizerWidget extends StatelessWidget {
+  final Widget child;
+  OnlyOnePointerRecognizerWidget({this.child});
+  @override
+  Widget build(BuildContext context) {
+    return RawGestureDetector(
+      gestures: <Type, GestureRecognizerFactory>{
+        OnlyOnePointerRecognizer: GestureRecognizerFactoryWithHandlers<OnlyOnePointerRecognizer>(
+              () => OnlyOnePointerRecognizer(),
+              (OnlyOnePointerRecognizer instance) {},
+        ),
+      },
+      child: child,
+    );
+  }
 }
 
 
