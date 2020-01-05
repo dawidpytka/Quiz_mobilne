@@ -43,7 +43,7 @@ class StageState extends State<Stage>{
             icon = Icons.done;
           }
         String data = "Dotychczasowe próby:";
-        data += QuestionsData.getInstance().stagePercentage[i].toString();
+        data += QuestionsData.getInstance().stageAttempts[i].toString();
         tileList.add(_tile(stagesNames[i-1],data,icon));
       }
       return tileList;
