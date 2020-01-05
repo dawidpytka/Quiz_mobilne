@@ -6,6 +6,7 @@ import 'questionsData.dart';
 import './database.dart';
 import './Result.dart';
 import 'Stages.dart';
+import 'dart:io';
 
 int questionNumber = 0;
 Quiz quiz;
@@ -56,7 +57,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         vsync: this,
         duration: Duration(
             milliseconds:
-            500)); //specify the duration for the animation & include `this` for the vsyc
+            400)); //specify the duration for the animation & include `this` for the vsyc
     _animation = ColorTween(begin: Colors.white, end: Colors.white).animate(
         _animationController); //use Tween animation here, to animate between the values of 1.0 & 2.5.
 
@@ -74,6 +75,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
             .reverse();
         wVisible = false;
         cVisible = false;
+        sleep(Duration(milliseconds: 500));
 
 
       }

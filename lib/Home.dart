@@ -1,11 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'database.dart';
+
 import './questionsData.dart';
-import './regulations.dart';
+
 import 'Stages.dart';
 
+import 'package:pdftron_flutter/pdftron_flutter.dart';
 
 class Home extends StatefulWidget{
   @override
@@ -90,8 +91,8 @@ class HomeState extends State<Home>{
   }
 
   void startMyApp(){
-    setState(() {
-      Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Viewer()));
-    });
+    PdftronFlutter.initialize("pDww-i5EZrU7KB2UKnHSRllTIloP4njHnGKQ421kdiYFxiJskqP1239ZNpS4BWJW8xYjDOunNfySI2DyF5NSPjUYGhFMBQbaOBQfOWu-PJPsatqd6y7wXaJeLHJTV7uR0CTOdvFXcSckP0BDQbIyp_TKEQwqRfQhMm-kwcxZ1nMb5T24F8gwzWI8UpigN_8GJxBZg_AS_VyEBbDJ6_nk9KyLuoAw5oFsMcJO64zaIwSCGYjdvOsPpiokg309ZO3DKBJre3NIUCnXLOFyHh8i51uiCPE5iQhE96P-LP5DcTask8gIWjIrJf93e6WAZSBgCJpPpfaZlsDmPoNaO5ixuqsGHA1peSNjV-zDaIvdhqFfgYR9zu2v2JQc9XPLBd17O1lZ9XMeyN0hG8oA6yUtMLZWxe948BtdQUcQusUBLQ5DLXF0MQBCC0uFCpaF4IBU");
+    PdftronFlutter.openDocument("https://site-868571.mozfiles.com/files/868571/001_regulamin_studiow.pdf");
+
   }
 }
