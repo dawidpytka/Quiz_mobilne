@@ -9,6 +9,10 @@ import './Result.dart';
 import './database.dart';
 import 'Stages.dart';
 import 'questionsData.dart';
+import 'package:audioplayers/audio_cache.dart';
+
+final player = AudioCache();
+
 
 int questionNumber = 0;
 Quiz quiz;
@@ -127,7 +131,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
 
                           ],
                         ),
-                        new Padding(padding: EdgeInsets.only(top:MediaQuery.of(context).size.height * 0.015)),
+                        new Padding(padding: EdgeInsets.only(top:20.0)),
                         new Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
@@ -170,6 +174,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
       Question currentQuestion = quiz.questionsStage[questionNumber];
       if(text == currentQuestion.correctAnswer)
       {
+        player.play('music/CorrectAnswer.mp3');
         _animation = ColorTween(begin: Colors.white, end: Colors.greenAccent).animate(
             _animationController);
         cVisible = true;
@@ -178,6 +183,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         updateQuestion(currentQuestion);
       }
       else {
+        player.play('music/WrongAnswer.mp3');
         wVisible = true;
         _animation = ColorTween(begin: Colors.white, end: Colors.redAccent).animate(
             _animationController);
@@ -201,7 +207,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
 
 
           style: TextStyle(fontSize: 15.0),
-          maxLines: 5,
+          maxLines: 8,
         ),
         onPressed: () {
               blockButtons = true;
