@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
+
+import 'Home.dart';
 import 'Stages.dart';
 import 'questionsData.dart';
 import 'quiz1.dart';
-import 'Home.dart';
 
 class Result extends StatefulWidget{
   @override
@@ -18,48 +21,98 @@ class ResultState extends State<Result> {
     return WillPopScope(
       child:
       new Scaffold(
-      backgroundColor: Colors.black,
-      body: new Stack(
-        children: <Widget>[
-          Container(
-            child: new Column(
-                children: <Widget>[
-                new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
-                new Text(
-                    "Podejscie nr ${QuestionsData.getInstance().stageAttempts[Stage.index]} do etapu nr ${Stage.index}",
-                    textAlign: TextAlign.center,
-                    style: new TextStyle(color: Colors.white,fontSize: 50)
-                ),
-                new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
-                new Text(
-                    "Zdobyles ${quiz.points} punktow. Gratulacje ! Zaliczyłeś ${updateCompletionPercentage()}% etapu!",
-                    textAlign: TextAlign.center,
-                    style: new TextStyle(color: Colors.white,fontSize: 50)
-                ),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(MediaQuery.of(context).size.height*0.1),
+          child: AppBar(
+            title: const Text(
+                "Podsumowanie",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white, fontSize: 35.0)),
+            leading: new Container(
+          ),
+        )),
+        backgroundColor: Colors.white,
+        body: new Stack(
+          children: <Widget>[
+            Container(
+              child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
+                    new CircularPercentIndicator(
+                      radius: 220.0,
+                      lineWidth: 23.0,
+                      animation: true,
+                      animationDuration: 2000,
+                      percent: updateCompletionPercentage()/100.0,
+                      center: new Text("${updateCompletionPercentage()} %",
+                        style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 35.0),
+                      ),
+                      footer: new Text(
+                        descriptionText(),
+                        textAlign: TextAlign.center,
+                        style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17.0),
+                      ),
+                      circularStrokeCap: CircularStrokeCap.round,
+                      progressColor: Colors.purple,
+                    ),
+                  new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.03)),
+                  new Text(
+                      "Numer podejścia: ${QuestionsData.getInstance().stageAttempts[Stage.index]}",
+                      textAlign: TextAlign.left,
+                      style: new TextStyle(color: Colors.black,fontSize: 20)
+                  ),
+                  new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.03)),
+                  new Text(
+                      "Zdobyte punkty: ${quiz.points}",
+                      textAlign: TextAlign.left,
+                      style: new TextStyle(color: Colors.black,fontSize: 20)
+                  ),
+                    new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
+                    new LinearPercentIndicator(
+                      width: MediaQuery.of(context).size.width *0.7,
+                      animation: true,
+                      lineHeight: 20.0,
+                      animationDuration: 2000,
+                      percent: totalProgress(),
+                      leading: new Text("Etap :  ",
+                          textAlign: TextAlign.left,
+                          style: new TextStyle(color: Colors.black,fontSize: 20)),
+                      center: Text("${Stage.index}/${QuestionsData.stageCount}"),
+                      linearStrokeCap: LinearStrokeCap.roundAll,
+                      progressColor: Colors.blueAccent,
+                    ),
+                    new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
+                    new Center(
+                      child: new MaterialButton(
+                        color: Colors.blue,
+                        onPressed: goBackHome,
+                        child: new Text("Powrot do menu głównego")),
+                  )]
+              )
+            )],
+        )
+      ),
+      onWillPop: () {
+        return Future.value(false); // if true allow back else block it
+    },);
+  }
 
-                  new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
-                new Center(
-                  child: new MaterialButton(
-                      color: Colors.white,
-                      onPressed: goBackHome,
-                      child: new Text("Powrot do menu głównego")),
-                )
-      ])
+  String descriptionText()
+  {
+    String text;
+    if(Stage.index == QuestionsData.stageCount)
+      text="Do zakończenia ostatniego \netapu pozostało ${100-updateCompletionPercentage()}%";
+    else
+      {
+        text = "Do odblokowania kolejnego \netapu pozostało ${100-updateCompletionPercentage()}%";
+      }
+    return text;
+  }
 
-          )
-
-        ],
-//        child: new Text(
-//                  "Zdobyles $points punktow. Gratulacje !",
-//                  textAlign: TextAlign.center,
-//                  style: new TextStyle(color: Colors.white,fontSize: 50)
-//        ),
-      )
-    ),
-    onWillPop: () {
-    return Future.value(false); // if true allow back else block it
-    },
-    );
+  double totalProgress()
+  {
+    return Stage.index/QuestionsData.stageCount;
   }
 
   int updateCompletionPercentage()

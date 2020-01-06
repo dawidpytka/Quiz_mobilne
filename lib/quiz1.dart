@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,6 @@ import './Result.dart';
 import './database.dart';
 import 'Stages.dart';
 import 'questionsData.dart';
-import 'package:audioplayers/audio_cache.dart';
 
 final player = AudioCache();
 
@@ -82,8 +82,6 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         wVisible = false;
         cVisible = false;
         sleep(Duration(milliseconds: 500));
-
-
       }
       else if(status == AnimationStatus.dismissed)
         {
