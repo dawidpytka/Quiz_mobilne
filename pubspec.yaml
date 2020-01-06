@@ -32,7 +32,7 @@ dependencies:
   pdftron_flutter:
     git:
       url: git://github.com/PDFTron/pdftron-flutter.git
-
+  permission_handler: '3.0.1'
 
 
 
