@@ -1,12 +1,14 @@
+import 'dart:io';
 import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'questionsData.dart';
-import './database.dart';
+
 import './Result.dart';
+import './database.dart';
 import 'Stages.dart';
-import 'dart:io';
+import 'questionsData.dart';
 
 int questionNumber = 0;
 Quiz quiz;
@@ -99,7 +101,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
                   margin: EdgeInsets.all(MediaQuery.of(context).size.height*0.01),
                   child: new Column(
                       children: <Widget>[
-                        new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
+                        new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
                         new Text ("Pytanie ${questionNumber+1} z ${quiz.questionsStage.length} \n masz ${quiz.points} punktów", textAlign: TextAlign.center,
                             style: new TextStyle(
                                 fontSize: 30.0
@@ -125,7 +127,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
 
                           ],
                         ),
-                        new Padding(padding: EdgeInsets.only(top:20.0)),
+                        new Padding(padding: EdgeInsets.only(top:MediaQuery.of(context).size.height * 0.015)),
                         new Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
