@@ -1016,7 +1016,7 @@ class QuestionsData {
         correctAnswer: 'Obie odpowiedzi są poprawne',
         done: 0
     ));
-
+    //13-14
     questions.add(Question(
         id: 76,
         stageNumber: 13,
@@ -1152,7 +1152,7 @@ class QuestionsData {
         correctAnswer: 'Odbyć szkolenie ochrony ppoż i bhp',
         done: 0
     ));
-
+// 12
     questions.add(Question(
         id: 83,
         stageNumber: 12,
@@ -1264,8 +1264,266 @@ class QuestionsData {
         correctAnswer:  'Jeden',
         done: 0
     ));
+// 11
+    questions.add(Question(
+        id: 91,
+        stageNumber: 11,
+        question: 'Praca dyplomowa jest wykonywana pod kierunkiem:',
+        answers: [
+          'Promotora',
+          'Prodziekana',
+          'Profesora',
+          'Prorektora'
+        ],
+        correctAnswer:  'Promotora',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 92,
+        stageNumber: 11,
+        question: 'Recenzenta pracy dyplomowej wyznacza:',
+        answers: [
+          'Promotor',
+          'Prodziekan',
+          'Profesor',
+          'Prorektor'
+        ],
+        correctAnswer:  'Prodziekan',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 92,
+        stageNumber: 11,
+        question: 'Co robi prodziekan w przypadku negatywnej oceny pracy przez recenzenta?',
+        answers: [
+          'Wyznacza drugiego recenzenta',
+          'Skreśla studenta z listy studentów',
+          'Sam recenzuje pracę',
+          'Oddaje pracę do recenzji promotorowi'
+        ],
+        correctAnswer:  'Wyznacza drugiego recenzenta',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 93,
+        stageNumber: 11,
+        question: 'Kiedy student może zapoznać się z treścią recenzji?',
+        answers: [
+          'Dwa dni przed wyznaczeniem terminu egzaminu dyplomowego',
+          'Dwa dni po recenzji pracy dyplomowej',
+          'Tydzień przed wyznaczeniem terminu egzaminu dyplomowego',
+          'Tydzień po recenzji pracy dyplomowej'
+        ],
+        correctAnswer:  'Dwa dni przed wyznaczeniem terminu egzaminu dyplomowego',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 94,
+        stageNumber: 11,
+        question: 'Kiedy student może zapoznać się z treścią recenzji?',
+        answers: [
+          'Dwa dni przed wyznaczeniem terminu egzaminu dyplomowego',
+          'Dwa dni po recenzji pracy dyplomowej',
+          'Tydzień przed wyznaczeniem terminu egzaminu dyplomowego',
+          'Tydzień po recenzji pracy dyplomowej'
+        ],
+        correctAnswer:  'Dwa dni przed wyznaczeniem terminu egzaminu dyplomowego',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 95,
+        stageNumber: 11,
+        question: 'Praca dyplomowa nie może być:',
+        answers: [
+          'Wykonywana poza Politechniką Łódzką',
+          'Oparta o projekt zespołowy',
+          'Napisana w języku innym niż języku prowadzenia studiów',
+          'Napisana przez kolegę'
+        ],
+        correctAnswer:  'Napisana przez kolegę',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 96,
+        stageNumber: 11,
+        question: 'Praca dyplomowa nie może być:',
+        answers: [
+          'Wykonywana poza Politechniką Łódzką',
+          'Oparta o projekt zespołowy',
+          'Napisana w języku innym niż języku prowadzenia studiów',
+          'Napisana przez kolegę'
+        ],
+        correctAnswer:  'Napisana przez kolegę',
+        done: 0
+    ));
+// 9-10
+    questions.add(Question(
+        id: 97,
+        stageNumber: 10,
+        question: 'Karą dyscyplinarną nie jest:',
+        answers: [
+          'Wydalenie z uczelni',
+          'Upomnienie',
+          'Nagana',
+          'Szlaban na komputer'
+        ],
+        correctAnswer:  'Szlaban na komputer',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 98,
+        stageNumber: 10,
+        question: 'Kryterią przyznawania stypendiów, nagród i wyróżnień nie są:',
+        answers: [
+          'Wyjątkowo dobry wyniki w nauce',
+          'Osiągnięcia sportowe',
+          'Sytuacja materialna',
+          'Aktywność w życiu studenckim'
+        ],
+        correctAnswer:  'Sytuacja materialna',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 99,
+        stageNumber: 10,
+        question: 'Liczba punktów ECTS przyznanych w wyniku potwierdzenia efektów uczenia się nie może przekroczyć:',
+        answers: [
+          '50%',
+          'Nie ma limityu',
+          '40%',
+          '60%'
+        ],
+        correctAnswer:  '50%',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 100,
+        stageNumber: 10,
+        question: 'Liczba punktów ECTS przyznanych w wyniku potwierdzenia efektów uczenia się nie może przekroczyć:',
+        answers: [
+          '50%',
+          'Nie ma limityu',
+          '40%',
+          '60%'
+        ],
+        correctAnswer:  '50%',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 101,
+        stageNumber: 10,
+        question: 'Dla studenta przyjętego na studia w wyniku potwierdzenia efektów uczenia się Prodziekan może:',
+        answers: [
+          'Określić indywidualną organizację studiów',
+          'Powołać opiekuna mającego co najmniej stopień doktora',
+          'Określić indywidualne warunki rejestracji na kolejna lata studiów',
+          'Przydzielić stypendium'
+        ],
+        correctAnswer:  'Przydzielić stypendium',
+        done: 0
+    ));
+//8
+    questions.add(Question(
+        id: 102,
+        stageNumber: 9,
+        question: 'Na ilu dodatkowych kierunkach może studiować student?',
+        answers: [
+          'Nie ma ograniczenia',
+          'Nie może studiować dodatkowego kierunku',
+          'Jednym',
+          'Dwóch'
+        ],
+        correctAnswer:  'Nie ma ograniczenia',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 103,
+        stageNumber: 9,
+        question: 'Kogo musi poinformować student o dokonanym wyborze kierunków studiów?',
+        answers: [
+          'Prodziekana wydziału kierunku podstawowego',
+          'Prodziekana każdego wydziału na którym studiuje',
+          'Rodziców',
+          'Prodziekana każdego wydziału w Polsce'
+        ],
+        correctAnswer:  'Prodziekana każdego wydziału na którym studiuje',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 104,
+        stageNumber: 9,
+        question: 'Czyja zgoda jest potrzebna by studiować przedmioty ponadprogramowe?',
+        answers: [
+          'Prodziekana',
+          'Wykładowcy przedmiotu',
+          'Nie można studiować przedmiotów ponadprogramowych',
+          'Rektora'
+        ],
+        correctAnswer:  'Prodziekana',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 105,
+        stageNumber: 9,
+        question: 'Punkty uzyskane w wyniku zaliczenia przedmiotów ponadprogramowych:',
+        answers: [
+          'Mogą zastąpić punkty z przedmiotów obieralnych',
+          'Mogą zastąpić dowolne braki punktowe',
+          'Można wymienić na bluzę',
+          'Nie są branie pod uwagę przy rozliczaniu przebiegu studiów'
+        ],
+        correctAnswer:  'Prodziekana',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 106,
+        stageNumber: 9,
+        question: 'Punkty uzyskane w wyniku zaliczenia przedmiotów ponadprogramowych:',
+        answers: [
+          'Mogą zastąpić punkty z przedmiotów obieralnych',
+          'Mogą zastąpić dowolne braki punktowe',
+          'Można wymienić na bluzę',
+          'Nie są branie pod uwagę przy rozliczaniu przebiegu studiów'
+        ],
+        correctAnswer:  'Prodziekana',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 107,
+        stageNumber: 9,
+        question: 'Zaznacz fałszywe stwierdzenie.Opłaty za przedmioty ponadprogramowe są:',
+        answers: [
+          'Pobierane na zasadach ustalonych przez Senat',
+          'O wysokości ustalonej przez rektora',
+          'Trafiają do prowadzącego przedmiot',
+          'Obowiązkowe'
+        ],
+        correctAnswer:  'Prodziekana',
+        done: 0
+    ));
+
+
+
     for (Question q in questions) {
       await insertQuestion(q);
     }
+
+
+
   }
 }
