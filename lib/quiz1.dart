@@ -1,12 +1,18 @@
+import 'dart:io';
 import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'questionsData.dart';
-import './database.dart';
+
 import './Result.dart';
+import './database.dart';
 import 'Stages.dart';
-import 'dart:io';
+import 'questionsData.dart';
+import 'package:audioplayers/audio_cache.dart';
+
+final player = AudioCache();
+
 
 int questionNumber = 0;
 Quiz quiz;
@@ -99,7 +105,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
                   margin: EdgeInsets.all(MediaQuery.of(context).size.height*0.01),
                   child: new Column(
                       children: <Widget>[
-                        new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1)),
+                        new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
                         new Text ("Pytanie ${questionNumber+1} z ${quiz.questionsStage.length} \n masz ${quiz.points} punktów", textAlign: TextAlign.center,
                             style: new TextStyle(
                                 fontSize: 30.0
@@ -168,6 +174,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
       Question currentQuestion = quiz.questionsStage[questionNumber];
       if(text == currentQuestion.correctAnswer)
       {
+        player.play('music/CorrectAnswer.mp3');
         _animation = ColorTween(begin: Colors.white, end: Colors.greenAccent).animate(
             _animationController);
         cVisible = true;
@@ -176,6 +183,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         updateQuestion(currentQuestion);
       }
       else {
+        player.play('music/WrongAnswer.mp3');
         wVisible = true;
         _animation = ColorTween(begin: Colors.white, end: Colors.redAccent).animate(
             _animationController);
@@ -199,7 +207,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
 
 
           style: TextStyle(fontSize: 15.0),
-          maxLines: 5,
+          maxLines: 8,
         ),
         onPressed: () {
               blockButtons = true;

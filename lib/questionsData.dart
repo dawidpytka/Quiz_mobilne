@@ -285,7 +285,7 @@ class QuestionsData {
     questions.add(Question(
         id: 19,
         stageNumber: 2,
-        question: 'Kiedy NIE wygasają praca i obowiązki studenta ?',
+        question: 'Kiedy NIE wygasają prawa i obowiązki studenta ?',
         answers: [
           'Z dniem utraty statusu studenta ',
           'Z dniem ukończenia studiów',
@@ -366,12 +366,12 @@ class QuestionsData {
         stageNumber: 3,
         question: 'W jakich dniach i godzinach odbywają się zajęcia na studia stacjonarnych ?',
         answers: [
-          'pon-pia 8-21',
-          'pon-niedz 6-22',
-          'pon-pia 7-20',
-          'pon-niedz 8-20'
+          'pon-pt 8-21',
+          'pon-ndz 6-22',
+          'pon-pt 7-20',
+          'pon-ndz 8-20'
         ],
-        correctAnswer: 'pon-pia 8-21',
+        correctAnswer: 'pon-pt 8-21',
         done: 0
     ));
 
@@ -380,10 +380,10 @@ class QuestionsData {
         stageNumber: 3,
         question: 'W jakich dniach i godzinach odbywają się zajęcia na studia niestacjonarnych ?',
         answers: [
-          'pon-pia 8-21',
-          'sob-niedz 6-22',
-          'pon-pia 7-20',
-          'sob-niedz 8-20'
+          'pon-pt 8-21',
+          'sob-ndz 6-22',
+          'pon-pt 7-20',
+          'sob-ndz 8-20'
         ],
         correctAnswer: 'sob-niedz 8-20',
         done: 0
