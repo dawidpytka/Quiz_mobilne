@@ -107,11 +107,7 @@ List<String> stagesNames = [
   "Etap 5: Studiowanie osób z niepełnosprawnością, urlopy, wznawianie studiów i zmiany kierunków studiów ",
   "Etap 6: Studiowanie przedmiotów ponadprogramowych oraz studia na kierunku dodatkowym",
   "Etap 7: Warunki odbywania studiów przez studentów przyjętych na studia w wyniku potwierdzenia efektów uczenia się",
-  "Etap 8: Nagrody, wyróżnienia i kary",
-  "Etap 9: Praca dyplomowa",
-  "Etap 10: Egzamin dyplomowy",
-  "Etap 11: Ukończenie studiów",
-  "Etap 12: Warunki i tryb uczestniczenia wybitnie uzdolnionych uczniów w zajęciach przewidzianych programem studiów",
-  "Etap 13: Przepisy przejściowe",
-  "Etap 14: Przepisy końcowe"
+  "Etap 8: Nagrody, wyróżnienia i kary, Praca dyplomowa",
+  "Etap 9: Egzamin dyplomowy",
+  "Etap 10: Ukończenie studiów, Warunki i tryb uczestniczenia wybitnie uzdolnionych uczniów w zajęciach przewidzianych programem studiów"
 ];

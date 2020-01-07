@@ -4,7 +4,7 @@ class QuestionsData {
   static QuestionsData instance = new QuestionsData();
   List<Question> questionList;
   int unlockedStage = 1;
-  static int stageCount = 13;
+  static int stageCount = 10;
   List<List<Question>> questionsStage = new List.generate(
       stageCount + 1, (i) => []);
   Map stageAttempts = new Map();
@@ -940,7 +940,7 @@ class QuestionsData {
 //Rodzial7
     questions.add(Question(
         id: 70,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Ponowny wpis na listę studentów, po skreślenie z niej, jest możliwy po maks...',
         answers: ['5 latach', '1 roku', '2 latach', '10 latach'],
         correctAnswer: '5 latach',
@@ -949,7 +949,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 71,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Student 1 roku może zostać ponownie przyjęty na studia o ile...',
         answers: [
           'przejdzie ponownie pozytywnie rekrutację',
@@ -963,7 +963,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 72,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Za przywrócenie w prawach studenta pobiera się opłatę w wysokości:',
         answers: [
           '70 złotych',
@@ -977,7 +977,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 73,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Co może student za zgodą odpowiednich Prodziekanów ?',
         answers: [
           'zmienić kierunek studiów',
@@ -991,7 +991,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 74,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Czy student może ubiegać się o przeniesienie na inny kierunek studiów ?',
         answers: [
           'Nie',
@@ -1005,7 +1005,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 75,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Do czego zobowiązany jest student PŁ w trybie przeniesienia na inną uczelnię ?',
         answers: [
           'Złożenia pisemnej informacji o przeniesieniu',
@@ -1019,7 +1019,7 @@ class QuestionsData {
     //13-14
     questions.add(Question(
         id: 76,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'W jakim terminie absolwent otrzymuje dyplom ukończenia studiów?',
         answers: [
           '30 dni',
@@ -1033,7 +1033,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 77,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Kiedy następuje ukończenie studiów?',
         answers: [
           'Z dniem złożenia egzaminu dyplomowego',
@@ -1047,7 +1047,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 78,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Kiedy następuje ukończenie studiów?',
         answers: [
           'Z dniem złożenia egzaminu dyplomowego',
@@ -1060,7 +1060,7 @@ class QuestionsData {
     ));
     questions.add(Question(
         id: 79,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Czyja rekomendacja jest potrzebna we wniosku o udział w zajęciach przwidzianych programem studiów dla uzdolnionych uczniów?',
         answers: [
           'Dyrektora szkoły',
@@ -1072,8 +1072,8 @@ class QuestionsData {
         done: 0
     ));
     questions.add(Question(
-        id: 80,
-        stageNumber: 13,
+        id: 150,
+        stageNumber: 10,
         question: 'Do czego NIE ma prawa uczeń dopuszczony do uczestnictwa w zajęciach?',
         answers: [
           'Korzystania z pomieszczeń dydaktyczncych',
@@ -1086,7 +1086,7 @@ class QuestionsData {
     ));
     questions.add(Question(
         id: 80,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Do czego NIE ma prawa uczeń dopuszczony do uczestnictwa w zajęciach?',
         answers: [
           'Korzystania z pomieszczeń dydaktyczncych',
@@ -1099,7 +1099,7 @@ class QuestionsData {
     ));
     questions.add(Question(
         id: 81,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Co otrzymuje uczeń po zaliczeniu zajęć?',
         answers: [
           'Odznakę dzielnego studenta',
@@ -1112,8 +1112,8 @@ class QuestionsData {
     ));
 
     questions.add(Question(
-        id: 81,
-        stageNumber: 13,
+        id: 151,
+        stageNumber: 10,
         question: 'Co otrzymuje uczeń po zaliczeniu zajęć?',
         answers: [
           'Odznakę dzielnego studenta',
@@ -1126,8 +1126,8 @@ class QuestionsData {
     ));
 
     questions.add(Question(
-        id: 81,
-        stageNumber: 13,
+        id: 152,
+        stageNumber: 10,
         question: 'Co musi zrobić uczeń przed przystąpieniem do zajęć ?',
         answers: [
           'Odbyć szkolenie ochrony ppoż i bhp',
@@ -1141,7 +1141,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 82,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Co musi zrobić uczeń przed przystąpieniem do zajęć ?',
         answers: [
           'Odbyć szkolenie ochrony ppoż i bhp',
@@ -1155,7 +1155,7 @@ class QuestionsData {
 // 12
     questions.add(Question(
         id: 83,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Co NIE jest wymagane do wyznaczenia terminu egzaminu dyplomowego?',
         answers: [
           'Zaliczenie praktyk zawodowych',
@@ -1169,7 +1169,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 84,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Co NIE jest wymagane do wyznaczenia terminu egzaminu dyplomowego?',
         answers: [
           'Zaliczenie praktyk zawodowych',
@@ -1183,7 +1183,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 85,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Kiedy student dowiaduje się o terminie egzaminu dyplomowego?',
         answers: [
           'Na początku semestru dyplomowego',
@@ -1197,7 +1197,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 86,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Z ilu osób składa się co najmniej komisja dyplomowa?',
         answers: [
           'Jednej',
@@ -1211,7 +1211,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 87,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Co NIE jest brane pod uwagę przy obliczaniu wyniku studiów?',
         answers: [
           'Średnia ocen',
@@ -1225,7 +1225,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 88,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Kiedy ogłaszane jest nadanie tytułu zawodowego?',
         answers: [
           'Bezpośrednio po zakończeniu egzaminu',
@@ -1239,7 +1239,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 89,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Wynik studiów 4,80 określony słownie to wynik:',
         answers: [
           'Celujący',
@@ -1253,7 +1253,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 90,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Ile dodatkowych terminów przysługuje studentowi który otrzymał negatywny wynik egzaminu dyplomowego?',
         answers: [
           'Jeden',
@@ -1267,7 +1267,7 @@ class QuestionsData {
 // 11
     questions.add(Question(
         id: 91,
-        stageNumber: 11,
+        stageNumber: 8,
         question: 'Praca dyplomowa jest wykonywana pod kierunkiem:',
         answers: [
           'Promotora',
@@ -1281,7 +1281,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 92,
-        stageNumber: 11,
+        stageNumber: 8,
         question: 'Recenzenta pracy dyplomowej wyznacza:',
         answers: [
           'Promotor',
@@ -1294,8 +1294,8 @@ class QuestionsData {
     ));
 
     questions.add(Question(
-        id: 92,
-        stageNumber: 11,
+        id: 157,
+        stageNumber: 8,
         question: 'Co robi prodziekan w przypadku negatywnej oceny pracy przez recenzenta?',
         answers: [
           'Wyznacza drugiego recenzenta',
@@ -1309,7 +1309,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 93,
-        stageNumber: 11,
+        stageNumber: 8,
         question: 'Kiedy student może zapoznać się z treścią recenzji?',
         answers: [
           'Dwa dni przed wyznaczeniem terminu egzaminu dyplomowego',
@@ -1323,7 +1323,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 94,
-        stageNumber: 11,
+        stageNumber: 8,
         question: 'Kiedy student może zapoznać się z treścią recenzji?',
         answers: [
           'Dwa dni przed wyznaczeniem terminu egzaminu dyplomowego',
@@ -1337,7 +1337,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 95,
-        stageNumber: 11,
+        stageNumber: 8,
         question: 'Praca dyplomowa nie może być:',
         answers: [
           'Wykonywana poza Politechniką Łódzką',
@@ -1351,7 +1351,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 96,
-        stageNumber: 11,
+        stageNumber: 8,
         question: 'Praca dyplomowa nie może być:',
         answers: [
           'Wykonywana poza Politechniką Łódzką',
@@ -1365,7 +1365,7 @@ class QuestionsData {
 // 9-10
     questions.add(Question(
         id: 97,
-        stageNumber: 10,
+        stageNumber: 8,
         question: 'Karą dyscyplinarną nie jest:',
         answers: [
           'Wydalenie z uczelni',
@@ -1379,7 +1379,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 98,
-        stageNumber: 10,
+        stageNumber: 8,
         question: 'Kryterią przyznawania stypendiów, nagród i wyróżnień nie są:',
         answers: [
           'Wyjątkowo dobry wyniki w nauce',
@@ -1391,131 +1391,6 @@ class QuestionsData {
         done: 0
     ));
 
-    questions.add(Question(
-        id: 99,
-        stageNumber: 10,
-        question: 'Liczba punktów ECTS przyznanych w wyniku potwierdzenia efektów uczenia się nie może przekroczyć:',
-        answers: [
-          '50%',
-          'Nie ma limityu',
-          '40%',
-          '60%'
-        ],
-        correctAnswer:  '50%',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 100,
-        stageNumber: 10,
-        question: 'Liczba punktów ECTS przyznanych w wyniku potwierdzenia efektów uczenia się nie może przekroczyć:',
-        answers: [
-          '50%',
-          'Nie ma limityu',
-          '40%',
-          '60%'
-        ],
-        correctAnswer:  '50%',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 101,
-        stageNumber: 10,
-        question: 'Dla studenta przyjętego na studia w wyniku potwierdzenia efektów uczenia się Prodziekan może:',
-        answers: [
-          'Określić indywidualną organizację studiów',
-          'Powołać opiekuna mającego co najmniej stopień doktora',
-          'Określić indywidualne warunki rejestracji na kolejna lata studiów',
-          'Przydzielić stypendium'
-        ],
-        correctAnswer:  'Przydzielić stypendium',
-        done: 0
-    ));
-//8
-    questions.add(Question(
-        id: 102,
-        stageNumber: 9,
-        question: 'Na ilu dodatkowych kierunkach może studiować student?',
-        answers: [
-          'Nie ma ograniczenia',
-          'Nie może studiować dodatkowego kierunku',
-          'Jednym',
-          'Dwóch'
-        ],
-        correctAnswer:  'Nie ma ograniczenia',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 103,
-        stageNumber: 9,
-        question: 'Kogo musi poinformować student o dokonanym wyborze kierunków studiów?',
-        answers: [
-          'Prodziekana wydziału kierunku podstawowego',
-          'Prodziekana każdego wydziału na którym studiuje',
-          'Rodziców',
-          'Prodziekana każdego wydziału w Polsce'
-        ],
-        correctAnswer:  'Prodziekana każdego wydziału na którym studiuje',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 104,
-        stageNumber: 9,
-        question: 'Czyja zgoda jest potrzebna by studiować przedmioty ponadprogramowe?',
-        answers: [
-          'Prodziekana',
-          'Wykładowcy przedmiotu',
-          'Nie można studiować przedmiotów ponadprogramowych',
-          'Rektora'
-        ],
-        correctAnswer:  'Prodziekana',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 105,
-        stageNumber: 9,
-        question: 'Punkty uzyskane w wyniku zaliczenia przedmiotów ponadprogramowych:',
-        answers: [
-          'Mogą zastąpić punkty z przedmiotów obieralnych',
-          'Mogą zastąpić dowolne braki punktowe',
-          'Można wymienić na bluzę',
-          'Nie są branie pod uwagę przy rozliczaniu przebiegu studiów'
-        ],
-        correctAnswer:  'Prodziekana',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 106,
-        stageNumber: 9,
-        question: 'Punkty uzyskane w wyniku zaliczenia przedmiotów ponadprogramowych:',
-        answers: [
-          'Mogą zastąpić punkty z przedmiotów obieralnych',
-          'Mogą zastąpić dowolne braki punktowe',
-          'Można wymienić na bluzę',
-          'Nie są branie pod uwagę przy rozliczaniu przebiegu studiów'
-        ],
-        correctAnswer:  'Prodziekana',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 107,
-        stageNumber: 9,
-        question: 'Zaznacz fałszywe stwierdzenie.Opłaty za przedmioty ponadprogramowe są:',
-        answers: [
-          'Pobierane na zasadach ustalonych przez Senat',
-          'O wysokości ustalonej przez rektora',
-          'Trafiają do prowadzącego przedmiot',
-          'Obowiązkowe'
-        ],
-        correctAnswer:  'Prodziekana',
-        done: 0
-    ));
 
 
 
