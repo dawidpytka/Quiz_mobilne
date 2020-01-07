@@ -96,7 +96,7 @@ bool checkIfCurrentStage(int number)
   if(number == QuestionsData.getInstance().unlockedStage) {
     return true;
   }
-  return false;
+  return true;
 }
 
 List<String> stagesNames = [
@@ -106,8 +106,8 @@ List<String> stagesNames = [
   "Etap 4: Zasady zaliczania przedmiotów i rejestracji studentów",
   "Etap 5: Studiowanie osób z niepełnosprawnością, urlopy, wznawianie studiów i zmiany kierunków studiów ",
   "Etap 6: Studiowanie przedmiotów ponadprogramowych oraz studia na kierunku dodatkowym",
-  "Etap 7: Warunki odbywania studiów przez studentów przyjętych na studia w wyniku potwierdzenia efektów uczenia się",
-  "Etap 8: Nagrody, wyróżnienia i kary, Praca dyplomowa",
+  "Etap 7: Warunki odbywania studiów przez studentów przyjętych na studia w wyniku potwierdzenia efektów uczenia się, Nagrody, wyróżnienia i kary",
+  "Etap 8: Praca dyplomowa",
   "Etap 9: Egzamin dyplomowy",
   "Etap 10: Ukończenie studiów, Warunki i tryb uczestniczenia wybitnie uzdolnionych uczniów w zajęciach przewidzianych programem studiów"
 ];

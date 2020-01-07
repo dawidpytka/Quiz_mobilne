@@ -1032,20 +1032,6 @@ class QuestionsData {
     ));
 
     questions.add(Question(
-        id: 77,
-        stageNumber: 10,
-        question: 'Kiedy następuje ukończenie studiów?',
-        answers: [
-          'Z dniem złożenia egzaminu dyplomowego',
-          'Z dniem uzyskania 200 punktów ECTS',
-          'Studiuje się całe życie',
-          '14 dni po złożeniu egzaminu dyplomowego'
-        ],
-        correctAnswer: 'Z dniem złożenia egzaminu dyplomowego',
-        done: 0
-    ));
-
-    questions.add(Question(
         id: 78,
         stageNumber: 10,
         question: 'Kiedy następuje ukończenie studiów?',
@@ -1071,19 +1057,7 @@ class QuestionsData {
         correctAnswer: 'Dyrektora szkoły',
         done: 0
     ));
-    questions.add(Question(
-        id: 150,
-        stageNumber: 10,
-        question: 'Do czego NIE ma prawa uczeń dopuszczony do uczestnictwa w zajęciach?',
-        answers: [
-          'Korzystania z pomieszczeń dydaktyczncych',
-          'Uczestniczenia w działalności studenckiego ruchu naukowego',
-          'Korzystania z pomocy ze strony pracowników uczelni',
-          'Mieszkania w akademiku'
-        ],
-        correctAnswer: 'Mieszkania w akademiku',
-        done: 0
-    ));
+
     questions.add(Question(
         id: 80,
         stageNumber: 10,
@@ -1112,34 +1086,6 @@ class QuestionsData {
     ));
 
     questions.add(Question(
-        id: 151,
-        stageNumber: 10,
-        question: 'Co otrzymuje uczeń po zaliczeniu zajęć?',
-        answers: [
-          'Odznakę dzielnego studenta',
-          'Potwierdzenie udziału w zajęciach i zaliczenia przedmiotu',
-          'Tytuł profesora',
-          'Stypendium rektora'
-        ],
-        correctAnswer: 'Potwierdzenie udziału w zajęciach i zaliczenia przedmiotu',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 152,
-        stageNumber: 10,
-        question: 'Co musi zrobić uczeń przed przystąpieniem do zajęć ?',
-        answers: [
-          'Odbyć szkolenie ochrony ppoż i bhp',
-          'Wypisać się ze szkoły',
-          'Odbyć egzamin wstępny',
-          'Zapłacić za wyrobienie legitymacji studenckiej'
-        ],
-        correctAnswer: 'Odbyć szkolenie ochrony ppoż i bhp',
-        done: 0
-    ));
-
-    questions.add(Question(
         id: 82,
         stageNumber: 10,
         question: 'Co musi zrobić uczeń przed przystąpieniem do zajęć ?',
@@ -1155,20 +1101,6 @@ class QuestionsData {
 // 12
     questions.add(Question(
         id: 83,
-        stageNumber: 9,
-        question: 'Co NIE jest wymagane do wyznaczenia terminu egzaminu dyplomowego?',
-        answers: [
-          'Zaliczenie praktyk zawodowych',
-          'Pozytywna ocena pracy dyplomowej',
-          'Potwierdzenie oryginalności pracy dyplomowej',
-          'Wniosek do rektora'
-        ],
-        correctAnswer: 'Wniosek do rektora',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 84,
         stageNumber: 9,
         question: 'Co NIE jest wymagane do wyznaczenia terminu egzaminu dyplomowego?',
         answers: [
@@ -1322,20 +1254,6 @@ class QuestionsData {
     ));
 
     questions.add(Question(
-        id: 94,
-        stageNumber: 8,
-        question: 'Kiedy student może zapoznać się z treścią recenzji?',
-        answers: [
-          'Dwa dni przed wyznaczeniem terminu egzaminu dyplomowego',
-          'Dwa dni po recenzji pracy dyplomowej',
-          'Tydzień przed wyznaczeniem terminu egzaminu dyplomowego',
-          'Tydzień po recenzji pracy dyplomowej'
-        ],
-        correctAnswer:  'Dwa dni przed wyznaczeniem terminu egzaminu dyplomowego',
-        done: 0
-    ));
-
-    questions.add(Question(
         id: 95,
         stageNumber: 8,
         question: 'Praca dyplomowa nie może być:',
@@ -1349,23 +1267,39 @@ class QuestionsData {
         done: 0
     ));
 
+// 9-10
+
     questions.add(Question(
-        id: 96,
-        stageNumber: 8,
-        question: 'Praca dyplomowa nie może być:',
+        id: 99,
+        stageNumber: 7,
+        question: 'Liczba punktów ECTS przyznanych w wyniku potwierdzenia efektów uczenia się nie może przekroczyć:',
         answers: [
-          'Wykonywana poza Politechniką Łódzką',
-          'Oparta o projekt zespołowy',
-          'Napisana w języku innym niż języku prowadzenia studiów',
-          'Napisana przez kolegę'
+          '50%',
+          'Nie ma limityu',
+          '40%',
+          '60%'
         ],
-        correctAnswer:  'Napisana przez kolegę',
+        correctAnswer:  '50%',
         done: 0
     ));
-// 9-10
+
+    questions.add(Question(
+        id: 101,
+        stageNumber: 7,
+        question: 'Dla studenta przyjętego na studia w wyniku potwierdzenia efektów uczenia się Prodziekan może:',
+        answers: [
+          'Określić indywidualną organizację studiów',
+          'Powołać opiekuna mającego co najmniej stopień doktora',
+          'Określić indywidualne warunki rejestracji na kolejna lata studiów',
+          'Przydzielić stypendium'
+        ],
+        correctAnswer:  'Przydzielić stypendium',
+        done: 0
+    ));
+
     questions.add(Question(
         id: 97,
-        stageNumber: 8,
+        stageNumber: 7,
         question: 'Karą dyscyplinarną nie jest:',
         answers: [
           'Wydalenie z uczelni',
@@ -1379,7 +1313,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 98,
-        stageNumber: 8,
+        stageNumber: 7,
         question: 'Kryterią przyznawania stypendiów, nagród i wyróżnień nie są:',
         answers: [
           'Wyjątkowo dobry wyniki w nauce',
