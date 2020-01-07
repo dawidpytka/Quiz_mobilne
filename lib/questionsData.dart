@@ -4,7 +4,7 @@ class QuestionsData {
   static QuestionsData instance = new QuestionsData();
   List<Question> questionList;
   int unlockedStage = 1;
-  static int stageCount = 14;
+  static int stageCount = 10;
   List<List<Question>> questionsStage = new List.generate(
       stageCount + 1, (i) => []);
   Map stageAttempts = new Map();
@@ -940,7 +940,7 @@ class QuestionsData {
 //Rodzial7
     questions.add(Question(
         id: 70,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Ponowny wpis na listę studentów, po skreślenie z niej, jest możliwy po maks...',
         answers: ['5 latach', '1 roku', '2 latach', '10 latach'],
         correctAnswer: '5 latach',
@@ -949,7 +949,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 71,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Student 1 roku może zostać ponownie przyjęty na studia o ile...',
         answers: [
           'przejdzie ponownie pozytywnie rekrutację',
@@ -963,7 +963,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 72,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Za przywrócenie w prawach studenta pobiera się opłatę w wysokości:',
         answers: [
           '70 złotych',
@@ -977,7 +977,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 73,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Co może student za zgodą odpowiednich Prodziekanów ?',
         answers: [
           'zmienić kierunek studiów',
@@ -991,7 +991,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 74,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Czy student może ubiegać się o przeniesienie na inny kierunek studiów ?',
         answers: [
           'Nie',
@@ -1005,7 +1005,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 75,
-        stageNumber: 5,
+        stageNumber: 6,
         question: 'Do czego zobowiązany jest student PŁ w trybie przeniesienia na inną uczelnię ?',
         answers: [
           'Złożenia pisemnej informacji o przeniesieniu',
@@ -1016,10 +1016,10 @@ class QuestionsData {
         correctAnswer: 'Obie odpowiedzi są poprawne',
         done: 0
     ));
-
+    //13-14
     questions.add(Question(
         id: 76,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'W jakim terminie absolwent otrzymuje dyplom ukończenia studiów?',
         answers: [
           '30 dni',
@@ -1032,22 +1032,8 @@ class QuestionsData {
     ));
 
     questions.add(Question(
-        id: 77,
-        stageNumber: 13,
-        question: 'Kiedy następuje ukończenie studiów?',
-        answers: [
-          'Z dniem złożenia egzaminu dyplomowego',
-          'Z dniem uzyskania 200 punktów ECTS',
-          'Studiuje się całe życie',
-          '14 dni po złożeniu egzaminu dyplomowego'
-        ],
-        correctAnswer: 'Z dniem złożenia egzaminu dyplomowego',
-        done: 0
-    ));
-
-    questions.add(Question(
         id: 78,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Kiedy następuje ukończenie studiów?',
         answers: [
           'Z dniem złożenia egzaminu dyplomowego',
@@ -1060,7 +1046,7 @@ class QuestionsData {
     ));
     questions.add(Question(
         id: 79,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Czyja rekomendacja jest potrzebna we wniosku o udział w zajęciach przwidzianych programem studiów dla uzdolnionych uczniów?',
         answers: [
           'Dyrektora szkoły',
@@ -1071,22 +1057,10 @@ class QuestionsData {
         correctAnswer: 'Dyrektora szkoły',
         done: 0
     ));
+
     questions.add(Question(
         id: 80,
-        stageNumber: 13,
-        question: 'Do czego NIE ma prawa uczeń dopuszczony do uczestnictwa w zajęciach?',
-        answers: [
-          'Korzystania z pomieszczeń dydaktyczncych',
-          'Uczestniczenia w działalności studenckiego ruchu naukowego',
-          'Korzystania z pomocy ze strony pracowników uczelni',
-          'Mieszkania w akademiku'
-        ],
-        correctAnswer: 'Mieszkania w akademiku',
-        done: 0
-    ));
-    questions.add(Question(
-        id: 80,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Do czego NIE ma prawa uczeń dopuszczony do uczestnictwa w zajęciach?',
         answers: [
           'Korzystania z pomieszczeń dydaktyczncych',
@@ -1099,7 +1073,7 @@ class QuestionsData {
     ));
     questions.add(Question(
         id: 81,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Co otrzymuje uczeń po zaliczeniu zajęć?',
         answers: [
           'Odznakę dzielnego studenta',
@@ -1108,40 +1082,12 @@ class QuestionsData {
           'Stypendium rektora'
         ],
         correctAnswer: 'Potwierdzenie udziału w zajęciach i zaliczenia przedmiotu',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 81,
-        stageNumber: 13,
-        question: 'Co otrzymuje uczeń po zaliczeniu zajęć?',
-        answers: [
-          'Odznakę dzielnego studenta',
-          'Potwierdzenie udziału w zajęciach i zaliczenia przedmiotu',
-          'Tytuł profesora',
-          'Stypendium rektora'
-        ],
-        correctAnswer: 'Potwierdzenie udziału w zajęciach i zaliczenia przedmiotu',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 81,
-        stageNumber: 13,
-        question: 'Co musi zrobić uczeń przed przystąpieniem do zajęć ?',
-        answers: [
-          'Odbyć szkolenie ochrony ppoż i bhp',
-          'Wypisać się ze szkoły',
-          'Odbyć egzamin wstępny',
-          'Zapłacić za wyrobienie legitymacji studenckiej'
-        ],
-        correctAnswer: 'Odbyć szkolenie ochrony ppoż i bhp',
         done: 0
     ));
 
     questions.add(Question(
         id: 82,
-        stageNumber: 13,
+        stageNumber: 10,
         question: 'Co musi zrobić uczeń przed przystąpieniem do zajęć ?',
         answers: [
           'Odbyć szkolenie ochrony ppoż i bhp',
@@ -1152,24 +1098,10 @@ class QuestionsData {
         correctAnswer: 'Odbyć szkolenie ochrony ppoż i bhp',
         done: 0
     ));
-
+// 12
     questions.add(Question(
         id: 83,
-        stageNumber: 12,
-        question: 'Co NIE jest wymagane do wyznaczenia terminu egzaminu dyplomowego?',
-        answers: [
-          'Zaliczenie praktyk zawodowych',
-          'Pozytywna ocena pracy dyplomowej',
-          'Potwierdzenie oryginalności pracy dyplomowej',
-          'Wniosek do rektora'
-        ],
-        correctAnswer: 'Wniosek do rektora',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 84,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Co NIE jest wymagane do wyznaczenia terminu egzaminu dyplomowego?',
         answers: [
           'Zaliczenie praktyk zawodowych',
@@ -1183,7 +1115,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 85,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Kiedy student dowiaduje się o terminie egzaminu dyplomowego?',
         answers: [
           'Na początku semestru dyplomowego',
@@ -1197,7 +1129,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 86,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Z ilu osób składa się co najmniej komisja dyplomowa?',
         answers: [
           'Jednej',
@@ -1211,7 +1143,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 87,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Co NIE jest brane pod uwagę przy obliczaniu wyniku studiów?',
         answers: [
           'Średnia ocen',
@@ -1225,7 +1157,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 88,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Kiedy ogłaszane jest nadanie tytułu zawodowego?',
         answers: [
           'Bezpośrednio po zakończeniu egzaminu',
@@ -1239,7 +1171,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 89,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Wynik studiów 4,80 określony słownie to wynik:',
         answers: [
           'Celujący',
@@ -1253,7 +1185,7 @@ class QuestionsData {
 
     questions.add(Question(
         id: 90,
-        stageNumber: 12,
+        stageNumber: 9,
         question: 'Ile dodatkowych terminów przysługuje studentowi który otrzymał negatywny wynik egzaminu dyplomowego?',
         answers: [
           'Jeden',
@@ -1264,8 +1196,143 @@ class QuestionsData {
         correctAnswer:  'Jeden',
         done: 0
     ));
+// 11
+    questions.add(Question(
+        id: 91,
+        stageNumber: 8,
+        question: 'Praca dyplomowa jest wykonywana pod kierunkiem:',
+        answers: [
+          'Promotora',
+          'Prodziekana',
+          'Profesora',
+          'Prorektora'
+        ],
+        correctAnswer:  'Promotora',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 92,
+        stageNumber: 8,
+        question: 'Recenzenta pracy dyplomowej wyznacza:',
+        answers: [
+          'Promotor',
+          'Prodziekan',
+          'Profesor',
+          'Prorektor'
+        ],
+        correctAnswer:  'Prodziekan',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 157,
+        stageNumber: 8,
+        question: 'Co robi prodziekan w przypadku negatywnej oceny pracy przez recenzenta?',
+        answers: [
+          'Wyznacza drugiego recenzenta',
+          'Skreśla studenta z listy studentów',
+          'Sam recenzuje pracę',
+          'Oddaje pracę do recenzji promotorowi'
+        ],
+        correctAnswer:  'Wyznacza drugiego recenzenta',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 93,
+        stageNumber: 8,
+        question: 'Kiedy student może zapoznać się z treścią recenzji?',
+        answers: [
+          'Dwa dni przed wyznaczeniem terminu egzaminu dyplomowego',
+          'Dwa dni po recenzji pracy dyplomowej',
+          'Tydzień przed wyznaczeniem terminu egzaminu dyplomowego',
+          'Tydzień po recenzji pracy dyplomowej'
+        ],
+        correctAnswer:  'Dwa dni przed wyznaczeniem terminu egzaminu dyplomowego',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 95,
+        stageNumber: 8,
+        question: 'Praca dyplomowa nie może być:',
+        answers: [
+          'Wykonywana poza Politechniką Łódzką',
+          'Oparta o projekt zespołowy',
+          'Napisana w języku innym niż języku prowadzenia studiów',
+          'Napisana przez kolegę'
+        ],
+        correctAnswer:  'Napisana przez kolegę',
+        done: 0
+    ));
+
+// 9-10
+
+    questions.add(Question(
+        id: 99,
+        stageNumber: 7,
+        question: 'Liczba punktów ECTS przyznanych w wyniku potwierdzenia efektów uczenia się nie może przekroczyć:',
+        answers: [
+          '50%',
+          'Nie ma limityu',
+          '40%',
+          '60%'
+        ],
+        correctAnswer:  '50%',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 101,
+        stageNumber: 7,
+        question: 'Dla studenta przyjętego na studia w wyniku potwierdzenia efektów uczenia się Prodziekan może:',
+        answers: [
+          'Określić indywidualną organizację studiów',
+          'Powołać opiekuna mającego co najmniej stopień doktora',
+          'Określić indywidualne warunki rejestracji na kolejna lata studiów',
+          'Przydzielić stypendium'
+        ],
+        correctAnswer:  'Przydzielić stypendium',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 97,
+        stageNumber: 7,
+        question: 'Karą dyscyplinarną nie jest:',
+        answers: [
+          'Wydalenie z uczelni',
+          'Upomnienie',
+          'Nagana',
+          'Szlaban na komputer'
+        ],
+        correctAnswer:  'Szlaban na komputer',
+        done: 0
+    ));
+
+    questions.add(Question(
+        id: 98,
+        stageNumber: 7,
+        question: 'Kryterią przyznawania stypendiów, nagród i wyróżnień nie są:',
+        answers: [
+          'Wyjątkowo dobry wyniki w nauce',
+          'Osiągnięcia sportowe',
+          'Sytuacja materialna',
+          'Aktywność w życiu studenckim'
+        ],
+        correctAnswer:  'Sytuacja materialna',
+        done: 0
+    ));
+
+
+
+
     for (Question q in questions) {
       await insertQuestion(q);
     }
+
+
+
   }
 }
