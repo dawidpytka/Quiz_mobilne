@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import 'Home.dart';
 import 'Stages.dart';
@@ -46,7 +47,7 @@ class ResultState extends State<Result> {
                       animationDuration: 2000,
                       percent: updateCompletionPercentage()/100.0,
                       center: new Text("${updateCompletionPercentage()} %",
-                        style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 35.0),
+                        style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 40.0),
                       ),
                       footer: new Text(
                         descriptionText(),
@@ -56,27 +57,67 @@ class ResultState extends State<Result> {
                       circularStrokeCap: CircularStrokeCap.round,
                       progressColor: Colors.purple,
                     ),
-                  new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.03)),
-                  new Text(
-                      "Numer podejścia: ${QuestionsData.getInstance().stageAttempts[Stage.index]}",
-                      textAlign: TextAlign.left,
-                      style: new TextStyle(color: Colors.black,fontSize: 20)
-                  ),
-                  new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.03)),
-                  new Text(
-                      "Zdobyte punkty: ${quiz.points}",
-                      textAlign: TextAlign.left,
-                      style: new TextStyle(color: Colors.black,fontSize: 20)
-                  ),
+                  new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.08)),
+                    new Container(
+                      child: new Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          new RichText(
+                              textAlign: TextAlign.center,
+                              text: new TextSpan(
+                                  style: new TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20
+                                  ),
+                                  children: <TextSpan>[
+                                    new TextSpan(
+                                        text: "${quiz.points} ",
+                                        style: new TextStyle(
+                                            fontFamily: "Helvetica",
+                                            fontSize: 42,
+                                            fontWeight: FontWeight.bold
+                                        )
+                                    ),
+                                    new TextSpan(
+                                        text: "\nZdobyte punkty"
+                                    )
+                                  ]
+                              )
+                          ),
+                          new RichText(
+                              textAlign: TextAlign.center,
+                              text: new TextSpan(
+                                  style: new TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                  ),
+                                  children: <TextSpan>[
+                                    new TextSpan(
+                                        text: " ${QuestionsData.getInstance().stageAttempts[Stage.index]}",
+                                        style: new TextStyle(
+                                            fontFamily: "Helvetica",
+                                            fontSize: 42,
+                                            fontWeight: FontWeight.bold
+                                        )
+                                    ),
+                                    new TextSpan(
+                                        text: "\nNumer podejścia"
+                                    )
+                                  ]
+                              )
+                          ),
+                        ],
+                      ),
+                    ),
                     new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
                     new LinearPercentIndicator(
+                      alignment: MainAxisAlignment.center,
                       width: MediaQuery.of(context).size.width *0.7,
                       animation: true,
                       lineHeight: 20.0,
                       animationDuration: 2000,
                       percent: totalProgress(),
-                      leading: new Text("Etap :  ",
-                          textAlign: TextAlign.left,
+                      leading: new Text("Etap ",
                           style: new TextStyle(color: Colors.black,fontSize: 20)),
                       center: Text("${Stage.index}/${QuestionsData.stageCount}"),
                       linearStrokeCap: LinearStrokeCap.roundAll,
@@ -96,6 +137,15 @@ class ResultState extends State<Result> {
       onWillPop: () {
         return Future.value(false); // if true allow back else block it
     },);
+  }
+
+  Alert _alertOfSuccess(BuildContext context) {
+    return Alert(
+      context: context,
+      title: "RFLUTTER ALERT",
+      desc: "Flutter is better with RFlutter Alert.",
+      image: Image.asset("assets/success.png"),
+    );
   }
 
   String descriptionText()
