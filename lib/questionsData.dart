@@ -33,6 +33,7 @@ class QuestionsData {
 
   Future<void> questionsInit() async
   {
+    //31, 32 takie same
 //WSTEP////////////////////////////////////////
     List<Question> questions = new List<Question>();
 
@@ -236,7 +237,7 @@ class QuestionsData {
           'Do bezpłatnego powtarzania przedmiotu',
           'Do dużego mieszkania z łazienką i garderobą'
         ],
-        correctAnswer: 'Do zmiany kierunku studiów',
+        correctAnswer: 'Do ubiegania się o zakwaterowanie swoich dzieci w akademiku',
         done: 0
     ));
 
@@ -250,7 +251,7 @@ class QuestionsData {
           'Odbywanie studiów zgodnie z programem nauczania',
           'Opłacenie ubezpieczenie'
         ],
-        correctAnswer: 'Do zmiany kierunku studiów',
+        correctAnswer: 'Opłacenie ubezpieczenie',
         done: 0
     ));
 
@@ -292,7 +293,7 @@ class QuestionsData {
           'Z dniem skreślenia z listy studentów',
           'Z dniem uzyskania 200 punktów ECTS'
         ],
-        correctAnswer: 'Uczęszczanie na wykłady',
+        correctAnswer: 'Z dniem uzyskania 200 punktów ECTS',
         done: 0
     ));
 // Organizacja studiow
@@ -385,7 +386,7 @@ class QuestionsData {
           'pon-pt 7-20',
           'sob-ndz 8-20'
         ],
-        correctAnswer: 'sob-niedz 8-20',
+        correctAnswer: 'sob-ndz 8-20',
         done: 0
     ));
 
@@ -422,7 +423,7 @@ class QuestionsData {
           'Student pierwszego roku studiów',
           'Student studiów niestacjonarnych'
         ],
-        correctAnswer: 'Studenci z dobrymi wynikami w nauce',
+        correctAnswer: 'Student z dobrymi wynikami w nauce',
         done: 0
     ));
 
@@ -634,7 +635,7 @@ class QuestionsData {
           'podczas sesji poprawkowej',
           'Taki student nie ma prawa ponownie przystąpić.'
         ],
-        correctAnswer: 'W następnym semestrze',
+        correctAnswer: 'w następnym semestrze',
         done: 0
     ));
 
@@ -766,7 +767,7 @@ class QuestionsData {
           'Tak',
           'Nie, tylko w formie, której nie zaliczył',
           'Nie, wystarczy, że podejdzie do kolokwium/egzaminu, którego nie zaliczył',
-          'Żadne z pozostałych. Niezaliczenie przedmiotu jest równoważne ze skreśleniem z listy studentów'
+          'Niezaliczenie przedmiotu jest równoważne ze skreśleniem z listy studentów'
         ],
         correctAnswer: 'Tak',
         done: 0
@@ -838,7 +839,7 @@ class QuestionsData {
         question: 'Która odpowiedź jest poprawna ?',
         answers: [
           'Student może ubiegać się o nowy termin złożenia pracy dyplomowej',
-          'Student, który nie złożył pracy dyplomowej w terminie zostaje skreślony z listy studentów',
+          'Student, który nie złożył pracy dyplomowej w terminie zostaje wyrzucony',
           'Można dwukrotnie zmienić termin złożenia pracy dyplomowej',
           'Wszystkie odpowiedzi są prawidłowe'
         ],
