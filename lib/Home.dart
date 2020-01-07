@@ -1,12 +1,15 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import './questionsData.dart';
 import './Settings.dart';
 import 'Stages.dart';
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
+import 'package:path_provider/path_provider.dart';
 
-import 'package:pdftron_flutter/pdftron_flutter.dart';
+const String _documentPath = 'assets/PDFs/regulamin_studiow.pdf';
 
 class Home extends StatefulWidget{
   @override
@@ -14,9 +17,24 @@ class Home extends StatefulWidget{
     QuestionsData.getInstance();
     return new HomeState();
   }
+
 }
 
 class HomeState extends State<Home>{
+
+  Future<String> prepareTestPdf() async {
+    final ByteData bytes =
+    await DefaultAssetBundle.of(context).load(_documentPath);
+    final Uint8List list = bytes.buffer.asUint8List();
+
+    final tempDir = await getTemporaryDirectory();
+    final tempDocumentPath = '${tempDir.path}/$_documentPath';
+
+    final file = await File(tempDocumentPath).create(recursive: true);
+    file.writeAsBytesSync(list);
+    return tempDocumentPath;
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -102,14 +120,38 @@ class HomeState extends State<Home>{
   }
 
   void startMyApp(){
-    PdftronFlutter.initialize("pDww-i5EZrU7KB2UKnHSRllTIloP4njHnGKQ421kdiYFxiJskqP1239ZNpS4BWJW8xYjDOunNfySI2DyF5NSPjUYGhFMBQbaOBQfOWu-PJPsatqd6y7wXaJeLHJTV7uR0CTOdvFXcSckP0BDQbIyp_TKEQwqRfQhMm-kwcxZ1nMb5T24F8gwzWI8UpigN_8GJxBZg_AS_VyEBbDJ6_nk9KyLuoAw5oFsMcJO64zaIwSCGYjdvOsPpiokg309ZO3DKBJre3NIUCnXLOFyHh8i51uiCPE5iQhE96P-LP5DcTask8gIWjIrJf93e6WAZSBgCJpPpfaZlsDmPoNaO5ixuqsGHA1peSNjV-zDaIvdhqFfgYR9zu2v2JQc9XPLBd17O1lZ9XMeyN0hG8oA6yUtMLZWxe948BtdQUcQusUBLQ5DLXF0MQBCC0uFCpaF4IBU");
-    PdftronFlutter.openDocument("https://site-868571.mozfiles.com/files/868571/001_regulamin_studiow.pdf");
 
+
+    setState(() {
+      prepareTestPdf().then((path) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => FullPdfViewerScreen(path)),
+        );
+      });
+    });
   }
 
   void startSettings(){
     setState(() {
       Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Settings()));
     });
+  }
+}
+
+
+class FullPdfViewerScreen extends StatelessWidget {
+  final String pdfPath;
+
+  FullPdfViewerScreen(this.pdfPath);
+
+  @override
+  Widget build(BuildContext context) {
+    return PDFViewerScaffold(
+        appBar: AppBar(
+          title: Text("Document"),
+        ),
+        path: pdfPath);
   }
 }
