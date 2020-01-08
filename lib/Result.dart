@@ -1,13 +1,30 @@
+import 'dart:math';
+
+import 'package:confetti/confetti.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 import 'Home.dart';
 import 'Stages.dart';
 import 'questionsData.dart';
 import 'quiz1.dart';
+
+class ConfettiSample extends StatelessWidget {
+  const ConfettiSample({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        showPerformanceOverlay: false,
+        title: 'Confetti',
+        home: Scaffold(
+          body: Result(),
+        ));
+  }
+}
 
 class Result extends StatefulWidget{
   @override
@@ -17,11 +34,25 @@ class Result extends StatefulWidget{
 }
 
 class ResultState extends State<Result> {
+  ConfettiController _controllerTopCenter;
+  @override
+  void initState() {
+    super.initState();
+    _controllerTopCenter = ConfettiController(duration: Duration(seconds: 5));
+    if(updateCompletionPercentage()==100)
+        _controllerTopCenter.play();
+  }
+
+  @override
+  void dispose() {
+    _controllerTopCenter.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      child:
-      new Scaffold(
+      child: new Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(MediaQuery.of(context).size.height*0.1),
           child: AppBar(
@@ -49,15 +80,13 @@ class ResultState extends State<Result> {
                       center: new Text("${updateCompletionPercentage()} %",
                         style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 40.0),
                       ),
-                      footer: new Text(
+                      footer:
                         descriptionText(),
-                        textAlign: TextAlign.center,
-                        style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17.0),
-                      ),
                       circularStrokeCap: CircularStrokeCap.round,
                       progressColor: Colors.purple,
                     ),
-                  new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.08)),
+                    completeText(),
+                  new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
                     new Container(
                       child: new Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -118,7 +147,8 @@ class ResultState extends State<Result> {
                       animationDuration: 2000,
                       percent: totalProgress(),
                       leading: new Text("Etap ",
-                          style: new TextStyle(color: Colors.black,fontSize: 20)),
+                          style: new TextStyle(color: Colors.black,fontSize: 20)
+                      ),
                       center: Text("${Stage.index}/${QuestionsData.stageCount}"),
                       linearStrokeCap: LinearStrokeCap.roundAll,
                       progressColor: Colors.blueAccent,
@@ -128,35 +158,65 @@ class ResultState extends State<Result> {
                       child: new MaterialButton(
                         color: Colors.blue,
                         onPressed: goBackHome,
-                        child: new Text("Powrot do menu głównego")),
+                        child: new Text("Powrot do menu głównego")
+                      ),
                   )]
               )
-            )],
-        )
+            ),
+            //TOP CENTER
+            Align(
+              alignment: Alignment.topCenter,
+              child: ConfettiWidget(
+                confettiController: _controllerTopCenter,
+                blastDirection: pi / 2,
+                maxBlastForce: 20,
+                minBlastForce: 2,
+                emissionFrequency: 0.05,
+                numberOfParticles: 50,
+              ),
+            ),
+        ],)
       ),
       onWillPop: () {
         return Future.value(false); // if true allow back else block it
     },);
   }
 
-  Alert _alertOfSuccess(BuildContext context) {
-    return Alert(
-      context: context,
-      title: "RFLUTTER ALERT",
-      desc: "Flutter is better with RFlutter Alert.",
-      image: Image.asset("assets/success.png"),
-    );
-  }
-
-  String descriptionText()
+  Text descriptionText()
   {
-    String text;
-    if(Stage.index == QuestionsData.stageCount)
-      text="Do zakończenia ostatniego \netapu pozostało ${100-updateCompletionPercentage()}%";
+    Text text;
+    if(updateCompletionPercentage()==100)
+      text = new Text(
+        "Gratulacje!",
+        textAlign: TextAlign.center,
+        style: new TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 40),
+      );
+    else if(Stage.index == QuestionsData.stageCount)
+      text=new Text(
+        "Do zakończenia ostatniego \netapu pozostało ${100-updateCompletionPercentage()}%",
+        textAlign: TextAlign.center,
+          style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17.0)
+      );
     else
       {
-        text = "Do odblokowania kolejnego \netapu pozostało ${100-updateCompletionPercentage()}%";
+        text = new Text(
+          "Do odblokowania kolejnego \netapu pozostało ${100-updateCompletionPercentage()}%",
+          textAlign: TextAlign.center,
+            style: new TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17.0)
+        );
       }
+    return text;
+  }
+
+  Text completeText()
+  {
+    Text text=new Text("");
+    if(updateCompletionPercentage()==100)
+      text = new Text(
+        "Udało Ci się zaliczyc etap ${Stage.index}",
+        textAlign: TextAlign.center,
+        style: new TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 20),
+      );
     return text;
   }
 
@@ -181,6 +241,4 @@ class ResultState extends State<Result> {
       Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Home()));
     });
   }
-
-
 }

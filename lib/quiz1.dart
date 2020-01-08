@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 
 import './Result.dart';
 import './database.dart';
+import 'Settings.dart';
 import 'Stages.dart';
 import 'questionsData.dart';
-import 'Settings.dart';
 
 
 
@@ -151,7 +151,6 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         return Future.value(false); // if true allow back else block it
       },
     );
-
   }
 
   void nextQuestion()
@@ -159,7 +158,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
     setState(() {
       if(questionNumber == quiz.questionsStage.length-1)
       {
-        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Result()));
+        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new ConfettiSample()));
       }
       else{
         questionNumber++;
@@ -273,8 +272,3 @@ class OnlyOnePointerRecognizerWidget extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
