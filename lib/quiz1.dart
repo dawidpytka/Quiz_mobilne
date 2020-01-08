@@ -10,11 +10,12 @@ import './Result.dart';
 import './database.dart';
 import 'Stages.dart';
 import 'questionsData.dart';
+import 'Settings.dart';
 
 
 
 final player = AudioCache();
-
+bool sound = true;
 
 int questionNumber = 0;
 Quiz quiz;
@@ -174,7 +175,9 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
       Question currentQuestion = quiz.questionsStage[questionNumber];
       if(text == currentQuestion.correctAnswer)
       {
-        player.play('music/CorrectAnswer.mp3');
+        if( sound ==true) {
+          player.play('music/CorrectAnswer.mp3');
+        }
         _animation = ColorTween(begin: Colors.white, end: Colors.greenAccent).animate(
             _animationController);
         cVisible = true;
@@ -183,7 +186,9 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         updateQuestion(currentQuestion);
       }
       else {
-        player.play('music/WrongAnswer.mp3');
+        if ( sound == true) {
+          player.play('music/WrongAnswer.mp3',volume: 0.5);
+        }
         wVisible = true;
         _animation = ColorTween(begin: Colors.white, end: Colors.redAccent).animate(
             _animationController);
@@ -195,13 +200,16 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
   Container answerButton(var text)
   {
     return Container(
+
       width: MediaQuery.of(context).size.width * 0.45
       ,
       height: MediaQuery.of(context).size.height * 0.13, //multiply the static height value with current animation.value value
       child:AbsorbPointer(
         absorbing: blockButtons,
        child:RaisedButton(
-        color: Colors.lightBlueAccent,
+         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
+
+         color: backgroundColorr,
         child: Text(text,
           textAlign: TextAlign.center,
 
