@@ -1,13 +1,15 @@
-import 'dart:ui';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import './questionsData.dart';
-import './Settings.dart';
-import 'Stages.dart';
 import 'dart:io';
 import 'dart:typed_data';
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
 import 'package:path_provider/path_provider.dart';
+
+import './Settings.dart';
+import './questionsData.dart';
+import 'Stages.dart';
 
 const String _documentPath = 'assets/PDFs/regulamin_studiow.pdf';
 
@@ -70,7 +72,7 @@ class HomeState extends State<Home> {
       child: new Scaffold(
           appBar: AppBar(
               centerTitle: true,
-              backgroundColor: backgroundColorr,
+              backgroundColor: Settings.color,
               title: Text('QuizPOL', style: TextStyle(fontSize: 35)),
               leading: new Container()),
           body: new Stack(
@@ -125,7 +127,7 @@ class HomeState extends State<Home> {
                               left: MediaQuery.of(context).size.width * 0.8)),
                       IconButton(
                           icon: new Icon(Icons.info,
-                              color: backgroundColorr, size: 40),
+                              color: Settings.color, size: 40),
                           onPressed: () {
                             infoAlert(context);
                           }),
@@ -145,7 +147,7 @@ class HomeState extends State<Home> {
     return new MaterialButton(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20.0))),
-      color: backgroundColorr,
+      color: Settings.color,
       onPressed: startMyApp,
       minWidth: MediaQuery.of(context).size.width * 0.5,
       height: 100.0,
@@ -157,7 +159,7 @@ class HomeState extends State<Home> {
     return new MaterialButton(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20.0))),
-      color: backgroundColorr,
+      color: Settings.color,
       onPressed: startQuiz1,
       minWidth: MediaQuery.of(context).size.width * 0.5,
       height: 100.0,

@@ -1,5 +1,8 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
+
+import 'Settings.dart';
 import 'questionsData.dart';
 import 'quiz1.dart';
 
@@ -16,6 +19,11 @@ class StageState extends State<Stage>{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Settings.color,
+          title: Text('QuizPOL', style: TextStyle(fontSize: 35)),
+          leading: new Container()),
       backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[

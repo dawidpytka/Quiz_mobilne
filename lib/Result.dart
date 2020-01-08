@@ -7,9 +7,11 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import 'Home.dart';
+import 'Settings.dart';
 import 'Stages.dart';
 import 'questionsData.dart';
 import 'quiz1.dart';
+
 
 class ConfettiSample extends StatelessWidget {
   const ConfettiSample({Key key}) : super(key: key);
@@ -56,6 +58,7 @@ class ResultState extends State<Result> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(MediaQuery.of(context).size.height*0.1),
           child: AppBar(
+            backgroundColor: Settings.color,
             title: const Text(
                 "Podsumowanie",
                 textAlign: TextAlign.center,
@@ -147,16 +150,20 @@ class ResultState extends State<Result> {
                       animationDuration: 2000,
                       percent: totalProgress(),
                       leading: new Text("Etap ",
-                          style: new TextStyle(color: Colors.black,fontSize: 20)
+                          style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20)
                       ),
                       center: Text("${Stage.index}/${QuestionsData.stageCount}"),
                       linearStrokeCap: LinearStrokeCap.roundAll,
-                      progressColor: Colors.blueAccent,
+                      progressColor: Settings.color,
                     ),
                     new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
                     new Center(
                       child: new MaterialButton(
-                        color: Colors.blue,
+                        shape:RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                        color: Settings.color,
                         onPressed: goBackHome,
                         child: new Text("Powrot do menu głównego")
                       ),
@@ -213,7 +220,7 @@ class ResultState extends State<Result> {
     Text text=new Text("");
     if(updateCompletionPercentage()==100)
       text = new Text(
-        "Udało Ci się zaliczyc etap ${Stage.index}",
+        "Udało Ci się zaliczyć etap ${Stage.index}",
         textAlign: TextAlign.center,
         style: new TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 20),
       );

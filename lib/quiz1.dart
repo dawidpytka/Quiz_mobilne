@@ -208,7 +208,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
        child:RaisedButton(
          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
 
-         color: backgroundColorr,
+         color: Settings.color,
         child: Text(text,
           textAlign: TextAlign.center,
 
