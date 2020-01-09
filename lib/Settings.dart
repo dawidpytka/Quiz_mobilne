@@ -45,7 +45,7 @@ class SettingsState extends State<Settings> {
         colorsTextHolder = 'Kolor ustawiony na niebieski';
         Settings.color = Colors.lightBlue;
       });
-      sound = true;
+
     }
     else {
       setState(() {
@@ -53,7 +53,7 @@ class SettingsState extends State<Settings> {
         colorsTextHolder = 'Kolory ustawiony na różowy';
         Settings.color = Colors.pink;
       });
-      sound = false;
+
     }
   }
 
