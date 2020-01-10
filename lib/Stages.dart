@@ -104,7 +104,7 @@ bool checkIfCurrentStage(int number)
   if(number == QuestionsData.getInstance().unlockedStage) {
     return true;
   }
-  return true;
+  return false;
 }
 
 List<String> stagesNames = [
