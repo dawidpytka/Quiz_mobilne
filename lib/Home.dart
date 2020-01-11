@@ -202,7 +202,8 @@ class FullPdfViewerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return PDFViewerScaffold(
         appBar: AppBar(
-          title: Text("Document"),
+          title: Text("Regulamin",style: TextStyle( fontSize: 35)),
+          backgroundColor: Settings.color,
         ),
         path: pdfPath);
   }
