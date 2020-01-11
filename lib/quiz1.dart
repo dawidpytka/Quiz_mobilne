@@ -100,18 +100,24 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
         child:AbsorbPointer(
           absorbing: blockButtons,
           child:Scaffold(
+              appBar: AppBar(
+                  title: Text('QuizPOL',style: TextStyle( fontSize: 35)),
+                  centerTitle: true,
+                  leading: new Container(),
+                  backgroundColor: Settings.color
+              ),
               backgroundColor: _animation.value,
               body:new OnlyOnePointerRecognizerWidget(
                 child: new Container(
                   margin: EdgeInsets.all(MediaQuery.of(context).size.height*0.01),
                   child: new Column(
                       children: <Widget>[
-                        new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
-                        new Text ("Pytanie ${questionNumber+1} z ${quiz.questionsStage.length} \n masz ${quiz.points} punktów", textAlign: TextAlign.center,
+                        new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.04)),
+                        new Text ("Pytanie ${questionNumber+1} z ${quiz.questionsStage.length}", textAlign: TextAlign.center,
                             style: new TextStyle(
-                                fontSize: 30.0
+                                fontSize: 34.0
                             )),
-                        new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.06)),
+                        new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
                         new AnimatedOpacity(opacity: wVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 500),child:Text("Zła odpowiedź !", style: new TextStyle(fontSize:30.0))),
                         new AnimatedOpacity(opacity: cVisible ? 1.0 : 0.0, duration: Duration(milliseconds: 500),child:Text("Poprawna odpowiedź !", style: new TextStyle(fontSize:30.0))),
                         new Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.05)),
@@ -123,7 +129,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
                                 fontSize:18.0,
                               )),
                         ),
-                        new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05)),
+                        new Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.04)),
                         new Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
@@ -213,8 +219,8 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
           textAlign: TextAlign.center,
 
 
-          style: TextStyle(fontSize: 15.0),
-          maxLines: 8,
+          style: TextStyle(fontSize: 14.0),
+          maxLines: 4,
         ),
         onPressed: () {
               blockButtons = true;

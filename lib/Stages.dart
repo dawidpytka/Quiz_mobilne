@@ -20,10 +20,10 @@ class StageState extends State<Stage>{
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
+          title: Text('Etapy',style: TextStyle( fontSize: 35)),
           centerTitle: true,
-          backgroundColor: Settings.color,
-          title: Text('QuizPOL', style: TextStyle(fontSize: 35)),
-          leading: new Container()),
+          backgroundColor: Settings.color
+      ),
       backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
@@ -80,7 +80,6 @@ class StageState extends State<Stage>{
       startQuiz1();
     }
   );
-
 
   void startQuiz1(){
     setState(() {

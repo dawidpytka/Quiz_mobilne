@@ -27,6 +27,7 @@ class ScaleRoute extends PageRouteBuilder {
           ),
           child: child,
         ),
+    transitionDuration: Duration(milliseconds: 500),
   );
 }
 

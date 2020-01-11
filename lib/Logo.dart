@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,10 +19,7 @@ class LogoState extends State<Logo>{
   LogoState(){
     _timer = new Timer(const Duration(milliseconds: 2000), () {
       setState(() {
-        Navigator.push(
-          context,
-          FadeRoute(page: Opening()),
-        );
+        Navigator.push(context, FadeRoute(page: Opening()),);
       });
     });
   }

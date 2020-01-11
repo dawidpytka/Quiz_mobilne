@@ -18,13 +18,18 @@ class ConfettiSample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        showPerformanceOverlay: false,
-        title: 'Confetti',
-        home: Scaffold(
-          body: Result(),
-        ));
+    return WillPopScope(
+      child:MaterialApp(
+          debugShowCheckedModeBanner: false,
+          showPerformanceOverlay: false,
+          title: 'Confetti',
+          home: Scaffold(
+            body: Result(),
+          )),
+      onWillPop: () {
+        return Future.value(false); // if true allow back else block it
+      },
+    );
   }
 }
 
@@ -53,8 +58,7 @@ class ResultState extends State<Result> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      child: new Scaffold(
+    return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(MediaQuery.of(context).size.height*0.1),
           child: AppBar(
@@ -63,8 +67,7 @@ class ResultState extends State<Result> {
                 "Podsumowanie",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white, fontSize: 35.0)),
-            leading: new Container(
-          ),
+            leading: new Container(),
         )),
         backgroundColor: Colors.white,
         body: new Stack(
@@ -183,10 +186,7 @@ class ResultState extends State<Result> {
               ),
             ),
         ],)
-      ),
-      onWillPop: () {
-        return Future.value(false); // if true allow back else block it
-    },);
+    );
   }
 
   Text descriptionText()

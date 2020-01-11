@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,10 +20,7 @@ class OpeningState extends State<Opening>{
   OpeningState(){
     _timer = new Timer(const Duration(milliseconds: 2000), () {
       setState(() {
-        Navigator.push(
-          context,
-          ScaleRoute(page: Home()),
-        );
+        Navigator.push(context, ScaleRoute(page: Home()),);
       });
     });
   }

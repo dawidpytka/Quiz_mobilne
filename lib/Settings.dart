@@ -66,7 +66,9 @@ class SettingsState extends State<Settings> {
               centerTitle: true,
               leading: new IconButton(
                   icon: new Icon(Icons.arrow_back),
-                  onPressed: goBackHome)
+                  onPressed: goBackHome
+              ),
+              backgroundColor: Settings.color
           ),
           body: new Column(
               children: [
@@ -126,7 +128,6 @@ class SettingsState extends State<Settings> {
         return Future.value(false); // if true allow back else block it
       },
     );
-
   }
 
   void goBackHome(){
