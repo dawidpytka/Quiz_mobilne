@@ -33,8 +33,8 @@ class QuestionsData {
 
   Future<void> questionsInit() async
   {
-    //31, 32 takie same
-//WSTEP////////////////////////////////////////
+
+    //WSTEP////////////////////////////////////////
     List<Question> questions = new List<Question>();
 
     questions.add(Question(
@@ -431,20 +431,6 @@ class QuestionsData {
         id: 31,
         stageNumber: 3,
         question: 'Co/Kogo otrzymuje student rozpoczynający indywidualny program studiów ?',
-        answers: [
-          'Opiekuna naukowego',
-          'Darmowe przejazdy komunikacją miejską',
-          'Sale laboratoryjne do własnego użytku',
-          'Grant na rozwój badań'
-        ],
-        correctAnswer: 'Opiekuna naukowego',
-        done: 0
-    ));
-
-    questions.add(Question(
-        id: 32,
-        stageNumber: 3,
-        question: 'Co/kogo otrzymuje student rozpoczynający indywidualny program studiów ?',
         answers: [
           'Opiekuna naukowego',
           'Darmowe przejazdy komunikacją miejską',
