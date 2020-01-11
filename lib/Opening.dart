@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:QuizPOL/Intro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'Home.dart';
+import './Intro.dart';
 import 'Routes.dart';
 
 
@@ -28,7 +27,9 @@ class OpeningState extends State<Opening>{
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return new WillPopScope(
+        onWillPop: () async => false,
+        child: MaterialApp(
     home: new GestureDetector(
 //      onTap: () {
 //        Navigator.push(context, ScaleRoute(page: new Home()),);
@@ -62,6 +63,7 @@ class OpeningState extends State<Opening>{
             ]
         )
       ),
-    )));
+    ))),
+    );
   }
 }
