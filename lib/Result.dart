@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+import 'EndResult.dart';
 import 'Home.dart';
 import 'Settings.dart';
 import 'Stages.dart';
@@ -43,7 +44,7 @@ class Result extends StatefulWidget{
 class ResultState extends State<Result> {
   ConfettiController _controllerTopCenter;
   @override
-  void initState() {
+  void initState() {new Result();
     super.initState();
     _controllerTopCenter = ConfettiController(duration: Duration(seconds: 5));
     if(updateCompletionPercentage()==100)
@@ -168,7 +169,7 @@ class ResultState extends State<Result> {
                           borderRadius: BorderRadius.all(Radius.circular(20.0))),
                         color: Settings.color,
                         onPressed: goBackHome,
-                        child: new Text("Powrot do menu głównego")
+                        child: new Text("Powrót")
                       ),
                   )]
               )
@@ -244,8 +245,17 @@ class ResultState extends State<Result> {
     {
       QuestionsData.getInstance().unlockedStage++;
     }
-    setState(() {
-      Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Home()));
-    });
-  }
+    if(QuestionsData.getInstance().unlockedStage > QuestionsData.stageCount)
+    {
+      setState(() {
+        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new EndResult()));
+      });
+    }
+    else
+      {
+        setState(() {
+          Navigator.push(context, new MaterialPageRoute(builder: (context)=> new EndResult()));
+        });
+      }
+    }
 }

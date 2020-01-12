@@ -18,6 +18,10 @@ class QuestionsData {
     }
   }
 
+  void restart() {
+    instance = new QuestionsData();
+  }
+
   void getList() async {
     await getDatabase();
     await questionsInit();

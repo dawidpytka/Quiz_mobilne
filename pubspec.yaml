@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
+  faker: ^1.1.1
   introduction_screen: ^1.0.7
   audioplayers: ^0.13.7
   flutter:
