@@ -1,3 +1,4 @@
+import 'package:QuizPOL/questionsData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -113,8 +114,15 @@ class SettingsState extends State<Settings> {
                       )
                   ),
                 ],),
-
-                Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.15)),
+                Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.02)),
+                MaterialButton(
+                  shape:RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                  onPressed: resetPopup,
+                  color: Colors.red,
+                  child: new Text("Restart gry"),
+                ),
+                Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.08)),
                 Opacity(
                   opacity: 0.8,
                   child:  Image.asset("assets/images/ustawienia.png",
@@ -127,6 +135,22 @@ class SettingsState extends State<Settings> {
       onWillPop: () {
         return Future.value(false); // if true allow back else block it
       },
+    );
+  }
+
+  void resetPopup() {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text("Restart gry"),
+          content: new Text("Czy na pewno chcesz zrestartować stan gry?"),
+          actions: <Widget>[
+            new FlatButton(onPressed: () {Navigator.of(context).pop();}, child: new Text("Nie")),
+            new FlatButton(onPressed: () {QuestionsData.getInstance().restart();Navigator.of(context).pop();}, child: new Text("Tak"))
+          ],
+        );
+      }
     );
   }
 

@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'Home.dart';
+import './Intro.dart';
 import 'Routes.dart';
 
 
@@ -20,14 +20,16 @@ class OpeningState extends State<Opening>{
   OpeningState(){
     _timer = new Timer(const Duration(milliseconds: 2000), () {
       setState(() {
-        Navigator.push(context, ScaleRoute(page: Home()),);
+        Navigator.push(context, ScaleRoute(page: Intro()),);
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return new WillPopScope(
+        onWillPop: () async => false,
+        child: MaterialApp(
     home: new GestureDetector(
 //      onTap: () {
 //        Navigator.push(context, ScaleRoute(page: new Home()),);
@@ -61,6 +63,7 @@ class OpeningState extends State<Opening>{
             ]
         )
       ),
-    )));
+    ))),
+    );
   }
 }
