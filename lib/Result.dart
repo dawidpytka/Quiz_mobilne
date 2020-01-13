@@ -254,7 +254,7 @@ class ResultState extends State<Result> {
     else
       {
         setState(() {
-          Navigator.push(context, new MaterialPageRoute(builder: (context)=> new EndResult()));
+          Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Home()));
         });
       }
     }

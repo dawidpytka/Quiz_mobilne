@@ -58,83 +58,36 @@ class  EndResultState extends State<EndResult> {
                     children: <Widget>[
                       Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.02),),
                       Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.02),),
-                      Table(
-                        border: TableBorder.all(width: 2.0, color: Colors.black),
-                        children: [
-                          TableRow(children: [
-                            TableCell(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  new Text("Kandydat",style: textStyle(20),),
-                                ],
-                              ),
+                      SingleChildScrollView(
+                        child: DataTable(
+                          columns: [
+                            DataColumn(label: Text('Kandydat')),
+                            DataColumn(label: Text('Suma podejść'))
+                          ],
+                          rows: [
+                            DataRow(
+                                selected: true,
+                                cells: [
+                                  DataCell(Text("Ty")),
+                                  DataCell(Text(attemptsData["Ty"].toString()))
+                                ]
                             ),
-                            TableCell(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  new Text("Suma podejść",style: textStyle(20),),
-                                ],
-                              ),
-                            )
-                          ]),
-                          TableRow(children: [
-                            TableCell(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  new Text("Ty",style: textStyle(18)),
-                                ],
-                              ),
+                            DataRow(
+                                cells: [
+                                  DataCell(Text(this.names[1])),
+                                  DataCell(Text(attemptsData[this.names[1]].toString()))
+                                ]
                             ),
-                            TableCell(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  new Text(attemptsData["Ty"].toString(),style: textStyle(18)),
-                                ],
-                              ),
+                            DataRow(
+                                cells: [
+                                  DataCell(Text(this.names[2])),
+                                  DataCell(Text(attemptsData[this.names[2]].toString()))
+                                ]
                             )
-                          ]),
-                          TableRow(children: [
-                            TableCell(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  new Text(this.names[1],style: textStyle(18)),
-                                ],
-                              ),
-                            ),
-                            TableCell(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  new Text(attemptsData[this.names[1]].toString(),style: textStyle(18)),
-                                ],
-                              ),
-                            )
-                          ]),
-                          TableRow(children: [
-                            TableCell(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  new Text(this.names[2],style: textStyle(18)),
-                                ],
-                              ),
-                            ),
-                            TableCell(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  new Text(attemptsData[this.names[2]].toString(),style: textStyle(18),),
-                                ],
-                              ),
-                            )
-                          ])
-                        ],
+                          ],
+                        ),
                       ),
+
                       Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.02),),
                       Text(finalText(),style: textStyle(20),),
                       Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.02),),
