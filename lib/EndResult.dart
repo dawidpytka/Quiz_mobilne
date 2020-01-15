@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:QuizPOL/questionsData.dart';
+import 'package:confetti/confetti.dart';
 
 import 'Home.dart';
 import 'Settings.dart';
@@ -9,16 +10,37 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 
+
+class EndResultConfetti extends StatelessWidget {
+  const EndResultConfetti({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+        child:MaterialApp(
+          debugShowCheckedModeBanner: false,
+          showPerformanceOverlay: true,
+          title: 'Confetti',
+          home: Scaffold(
+            body: EndResult(),
+          )),
+      onWillPop: () {
+        return Future.value(false); // if true allow back else block it
+      },
+    );
+  }
+}
+
 class EndResult extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     return new EndResultState();
   }
-
-  }
+}
 
 class  EndResultState extends State<EndResult> {
-
+  ConfettiController _controllerTopCenter;
+  ConfettiController _controllerBottonCenter;
   Map<String,int> attemptsData;
   List<String> names;
 
@@ -28,7 +50,22 @@ class  EndResultState extends State<EndResult> {
     super.initState();
     attemptsData = groupData();
     names = attemptsData.keys.toList();
+    _controllerTopCenter = ConfettiController(duration: Duration(seconds: 6));
+    _controllerBottonCenter = ConfettiController(duration: Duration(seconds: 6));
+    if(playersIsTop())
+      {
+        _controllerBottonCenter.play();
+        _controllerTopCenter.play();
+      }
   }
+
+  @override
+  void dispose() {
+    _controllerTopCenter.dispose();
+    _controllerBottonCenter.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -89,8 +126,10 @@ class  EndResultState extends State<EndResult> {
                       ),
 
                       Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.02),),
-                      Text(finalText(),style: textStyle(20),),
+                      Text(finalText(),style: textStyle(20), textAlign: TextAlign.center,),
                       Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.02),),
+                      greetings(),
+                      Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height*0.06),),
                       MaterialButton(
                         shape:RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0))),
@@ -101,7 +140,31 @@ class  EndResultState extends State<EndResult> {
 
                     ],
                   ),
-                )
+                ),
+                //TOP CENTER
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: ConfettiWidget(
+                    confettiController: _controllerTopCenter,
+                    blastDirection: pi / 2,
+                    maxBlastForce: 5,
+                    minBlastForce: 2,
+                    emissionFrequency: 0.05,
+                    numberOfParticles: 30,
+                  ),
+                ),
+                //BOTTOM CENTER
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ConfettiWidget(
+                    confettiController: _controllerBottonCenter,
+                    blastDirection: -pi / 2,
+                    emissionFrequency: 0.02,
+                    numberOfParticles: 20,
+                    maxBlastForce: 100,
+                    minBlastForce: 80,
+                  ),
+                ),
               ],
             ),
           )),
@@ -162,11 +225,19 @@ class  EndResultState extends State<EndResult> {
 
   String finalText(){
     if(playersIsTop()){
-      return "Gratulacje! Udało ci się zdobyć najwyższe miejsce w grupie!";
+      return "Gratulacje!\nUdało ci się zdobyć najwyższe miejsce w grupie!";
     }
     else
     {
       return "Niestety nie udało ci się zdobyć najwyższego miejsca w grupie. Spróbuj ponownie!";
     }
+  }
+
+  Text greetings()
+  {
+    if(playersIsTop())
+      return new Text(
+        "Witamy na Politechnice Łódzkiej!",
+        style: TextStyle(color: Colors.red,fontSize: 23, fontWeight: FontWeight.bold),);
   }
 }

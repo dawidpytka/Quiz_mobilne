@@ -623,7 +623,7 @@ class QuestionsData {
           'w następnym semestrze',
           'podczas kolejnego terminu',
           'podczas sesji poprawkowej',
-          'Taki student nie ma prawa ponownie przystąpić.'
+          'Taki student nie ma prawa ponownie przystąpić do egzaminu.'
         ],
         correctAnswer: 'w następnym semestrze',
         done: 0
@@ -1038,7 +1038,7 @@ class QuestionsData {
     questions.add(Question(
         id: 79,
         stageNumber: 10,
-        question: 'Czyja rekomendacja jest potrzebna we wniosku o udział w zajęciach przwidzianych programem studiów dla uzdolnionych uczniów?',
+        question: 'Czyja rekomendacja jest potrzebna we wniosku o udział w zajęciach przewidzianych programem studiów dla uzdolnionych uczniów?',
         answers: [
           'Dyrektora szkoły',
           'Prezydenta miasta',

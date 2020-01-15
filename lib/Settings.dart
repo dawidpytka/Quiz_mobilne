@@ -33,7 +33,7 @@ class SettingsState extends State<Settings> {
     else {
       setState(() {
         soundSwitchControl = false;
-        soundTextHolder = 'Dżwięk jest wyłączony';
+        soundTextHolder = 'Dźwięk jest wyłączony';
       });
       sound = false;
     }
@@ -51,7 +51,7 @@ class SettingsState extends State<Settings> {
     else {
       setState(() {
         colorSwitchControl = false;
-        colorsTextHolder = 'Kolory ustawiony na różowy';
+        colorsTextHolder = 'Kolor ustawiony na różowy';
         Settings.color = Colors.pink;
       });
 

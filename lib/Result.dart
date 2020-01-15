@@ -14,8 +14,8 @@ import 'questionsData.dart';
 import 'quiz1.dart';
 
 
-class ConfettiSample extends StatelessWidget {
-  const ConfettiSample({Key key}) : super(key: key);
+class StageConfetti extends StatelessWidget {
+  const StageConfetti({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class ResultState extends State<Result> {
   @override
   void initState() {new Result();
     super.initState();
-    _controllerTopCenter = ConfettiController(duration: Duration(seconds: 5));
+    _controllerTopCenter = ConfettiController(duration: Duration(seconds: 3));
     if(updateCompletionPercentage()==100)
         _controllerTopCenter.play();
   }
@@ -169,7 +169,7 @@ class ResultState extends State<Result> {
                           borderRadius: BorderRadius.all(Radius.circular(20.0))),
                         color: Settings.color,
                         onPressed: goBackHome,
-                        child: new Text("Powrót")
+                        child: buttonText()
                       ),
                   )]
               )
@@ -183,11 +183,20 @@ class ResultState extends State<Result> {
                 maxBlastForce: 20,
                 minBlastForce: 2,
                 emissionFrequency: 0.05,
-                numberOfParticles: 50,
+                numberOfParticles: 20,
               ),
             ),
         ],)
     );
+  }
+
+  Text buttonText()
+  {
+    Text text;
+    if(Stage.index == QuestionsData.stageCount)
+      text = new Text("Sprawdź wynik końcowy") ;
+    else text = new Text("Powrót");
+    return text;
   }
 
   Text descriptionText()

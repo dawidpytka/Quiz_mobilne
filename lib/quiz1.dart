@@ -164,7 +164,7 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
     setState(() {
       if(questionNumber == quiz.questionsStage.length-1)
       {
-        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new ConfettiSample()));
+        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new StageConfetti()));
       }
       else{
         questionNumber++;
@@ -219,8 +219,8 @@ class Quiz1State extends State<Quiz1> with SingleTickerProviderStateMixin  {
           textAlign: TextAlign.center,
 
 
-          style: TextStyle(fontSize: 14.0),
-          maxLines: 4,
+          style: TextStyle(fontSize: 13.0),
+          maxLines: 5,
         ),
         onPressed: () {
               blockButtons = true;
