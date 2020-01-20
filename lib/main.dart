@@ -7,7 +7,8 @@ void main(){
   quiz = new Quiz();
   runApp(
       new MaterialApp(
-        home: new Logo(),
+          debugShowCheckedModeBanner:false,
+          home: new Logo(),
       )
   );
 }

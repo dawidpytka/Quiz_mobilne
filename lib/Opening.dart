@@ -30,7 +30,8 @@ class OpeningState extends State<Opening>{
     return new WillPopScope(
         onWillPop: () async => false,
         child: MaterialApp(
-    home: new GestureDetector(
+            debugShowCheckedModeBanner: false,
+            home: new GestureDetector(
 //      onTap: () {
 //        Navigator.push(context, ScaleRoute(page: new Home()),);
 //      },

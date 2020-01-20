@@ -32,6 +32,7 @@ class LogoState extends State<Logo>{
       DeviceOrientation.portraitDown,
     ]);
     return new MaterialApp(
+      debugShowCheckedModeBanner:false,
       home:new GestureDetector(
 //          onTap: () {
 //            Navigator.push(
