@@ -252,7 +252,7 @@ class ResultState extends State<Result> {
   void goBackHome(){
     if(updateCompletionPercentage() == 100)
     {
-      QuestionsData.getInstance().unlockedStage++;
+      QuestionsData.getInstance().iterateStage();
     }
     if(QuestionsData.getInstance().unlockedStage > QuestionsData.stageCount)
     {

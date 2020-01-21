@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:path_provider/path_provider.dart';
+
 import "database.dart";
 
 class QuestionsData {
@@ -18,17 +22,49 @@ class QuestionsData {
     }
   }
 
-  void restart() {
+  void restart() async {
     instance = new QuestionsData();
+    await questionsInit();
   }
 
   void getList() async {
     await getDatabase();
-    await questionsInit();
+    final path = await _localPath;
+    if(await File('$path/alreadyFilled.txt').exists()){
+      final file = await _localFile;
+      String contents = await file.readAsString();
+      unlockedStage = int.parse(contents);
+    }
+    else{
+      await questionsInit();
+      writeFile();
+    }
     questionList = await getQuestions();
     for (Question question in questionList) {
       questionsStage[question.stageNumber].add(question);
     }
+  }
+
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+
+    return directory.path;
+  }
+
+  Future<File> get _localFile async {
+    final path = await _localPath;
+    return File('$path/currentStage.txt');
+  }
+
+  Future<File> writeFile() async {
+    final file = await _localFile;
+    return file.writeAsString(unlockedStage.toString());
+  }
+
+
+   void iterateStage(){
+    unlockedStage++;
+    writeFile();
   }
 
   static QuestionsData getInstance() {
@@ -1315,9 +1351,6 @@ class QuestionsData {
         correctAnswer:  'Sytuacja materialna',
         done: 0
     ));
-
-
-
 
     for (Question q in questions) {
       await insertQuestion(q);
