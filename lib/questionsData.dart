@@ -16,10 +16,7 @@ class QuestionsData {
 
   QuestionsData() {
     getList();
-    for (int i = 1; i < stageCount + 1; i++) {
-      stageAttempts[i] = 0;
-      stagePercentage[i] = 0;
-    }
+
   }
 
   void restart() async {
@@ -30,12 +27,14 @@ class QuestionsData {
   void getList() async {
     await getDatabase();
     final path = await _localPath;
-    if(await File('$path/alreadyFilled.txt').exists()){
-      final file = await _localFile;
-      String contents = await file.readAsString();
-      unlockedStage = int.parse(contents);
+    if(await File('$path/currentStage.txt').exists()){
+      deserialize();
     }
     else{
+      for (int i = 1; i < stageCount + 1; i++) {
+        stageAttempts[i] = 0;
+        stagePercentage[i] = 0;
+      }
       await questionsInit();
       writeFile();
     }
@@ -60,6 +59,54 @@ class QuestionsData {
     final file = await _localFile;
     return file.writeAsString(unlockedStage.toString());
   }
+
+  Future<void> serializePercentage() async{
+      final path = await _localPath;
+      final file = File('$path/percentage.txt');
+      StringBuffer content = new StringBuffer();
+      for(int i=1; i<stagePercentage.length+1; i++){
+        content.write(stagePercentage[i].toString());
+        content.write(',');
+      }
+      file.writeAsString(content.toString());
+  }
+
+  Future<void> serializeAttempts() async{
+    final path = await _localPath;
+    final file = File('$path/attempts.txt');
+    StringBuffer content = new StringBuffer();
+    for(int i=1; i<stageAttempts.length+1; i++){
+      content.write(stageAttempts[i].toString());
+      content.write(',');
+    }
+    file.writeAsString(content.toString());
+  }
+
+  Future<void> deserialize() async{
+    final path = await _localPath;
+    final fileStages = await _localFile;
+    final fileAttempts = File('$path/attempts.txt');
+    final filePercentage = File('$path/percentage.txt');
+
+    String unlocked = await fileStages.readAsString();
+    unlockedStage = int.parse(unlocked);
+
+    String attempts = await fileAttempts.readAsString();
+    var attemptsArr = attempts.split(',');
+    for(int i=1 ;i<attemptsArr.length;i++)
+      {
+        stageAttempts[i] = int.parse(attemptsArr[i-1]);
+      }
+
+    String percentage = await filePercentage.readAsString();
+    var percentageArr = percentage.split(',');
+    for(int i=1 ;i<percentageArr.length;i++)
+    {
+     stagePercentage[i] = int.parse(percentageArr[i-1]);
+    }
+
+  }
+
 
 
    void iterateStage(){
