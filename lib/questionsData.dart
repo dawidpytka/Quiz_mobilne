@@ -20,8 +20,15 @@ class QuestionsData {
   }
 
   void restart() async {
-    instance = new QuestionsData();
+    unlockedStage = 1;
     await questionsInit();
+    for (int i = 1; i < stageCount + 1; i++) {
+      stageAttempts[i] = 0;
+      stagePercentage[i] = 0;
+    }
+    await writeFile();
+    await serializeAttempts();
+    await serializePercentage();
   }
 
   void getList() async {
