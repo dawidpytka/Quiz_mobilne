@@ -36,6 +36,7 @@ class Quiz1 extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     QuestionsData.getInstance().stageAttempts[Stage.index]+=1;
+    QuestionsData.getInstance().serializeAttempts();
     questionNumber=0;
     quiz.points=0;
     quiz.questionsStage = new List();

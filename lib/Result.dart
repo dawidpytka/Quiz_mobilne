@@ -246,13 +246,14 @@ class ResultState extends State<Result> {
   {
     int percentage = (100-(quiz.questionsStage.length-quiz.points)/QuestionsData.getInstance().questionsStage[Stage.index].length*100).round();
     QuestionsData.getInstance().stagePercentage[Stage.index] = percentage;
+    QuestionsData.getInstance().serializePercentage();
     return percentage;
   }
 
   void goBackHome(){
     if(updateCompletionPercentage() == 100)
     {
-      QuestionsData.getInstance().unlockedStage++;
+      QuestionsData.getInstance().iterateStage();
     }
     if(QuestionsData.getInstance().unlockedStage > QuestionsData.stageCount)
     {
